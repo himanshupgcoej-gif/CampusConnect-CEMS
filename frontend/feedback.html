@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Share Your Experience | CampusConnect</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/feedback.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <img src="assets/image/logo.png.png" alt="College Events Logo">
+
+            <div class="brand-text">
+                <h1>College Events</h1>
+                <p>Management System</p>
+            </div>
+        </a>
+    </header>
+
+    <main class="feedback-page">
+
+        <section class="feedback-container">
+
+            <a href="index.html" class="feedback-back">
+                ← Back to Home
+            </a>
+
+            <div class="feedback-heading">
+                <span class="section-label">STUDENT EXPERIENCES</span>
+
+                <h2>Share Your <span>Experience</span></h2>
+
+                <p>
+                    Your feedback matters! Share your experience
+                    and inspire other students to participate.
+                </p>
+            </div>
+
+            <form id="feedback-form" class="feedback-form">
+
+                <div class="feedback-field">
+                    <label for="feedback-rating">
+                        How would you rate your experience?
+                    </label>
+
+                    <select id="feedback-rating" name="rating" required>
+                        <option value="">Select your rating</option>
+                        <option value="5">★★★★★ - Excellent</option>
+                        <option value="4">★★★★ - Very Good</option>
+                        <option value="3">★★★ - Good</option>
+                        <option value="2">★★ - Fair</option>
+                        <option value="1">★ - Poor</option>
+                    </select>
+                </div>
+
+                <div class="feedback-field">
+                    <label for="feedback-experience">
+                        Tell us about your experience
+                    </label>
+
+                    <textarea
+                        id="feedback-experience"
+                        name="experience"
+                        rows="6"
+                        minlength="10"
+                        maxlength="2000"
+                        placeholder="Share your experience with college events..."
+                        required
+                    ></textarea>
+
+                    <small>Minimum 10 characters · Maximum 2000 characters</small>
+                </div>
+
+                <p id="feedback-message" class="feedback-message" role="status" aria-live="polite"></p>
+
+                <button type="submit" id="feedback-submit-btn" class="feedback-submit-btn">
+                    Submit Feedback →
+                </button>
+
+            </form>
+
+            <p class="feedback-note">
+                Your feedback will be reviewed by the administration
+                before appearing on the homepage.
+            </p>
+
+        </section>
+
+    </main>
+    <script src="assets/js/config.js" defer></script>
+    <script src="assets/js/feedback.js" defer></script>
+
+</body>
+
+</html>

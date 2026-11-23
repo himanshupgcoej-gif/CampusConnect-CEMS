@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | CampusConnect</title>
+
+    <meta name="description" content="CEMS Admin Dashboard - Manage users, events, certificates and student feedback.">
+
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+
+    <script src="assets/js/config.js" defer></script>
+    <script src="assets/js/admin-dashboard.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="admin-header">
+
+        <div class="header-left">
+
+            <button class="menu-toggle" id="menu-toggle" type="button"
+                aria-label="Toggle sidebar">
+                ☰
+            </button>
+
+            <h2>CampusConnect <span>Admin</span></h2>
+
+        </div>
+
+        <div class="header-right">
+
+            <span id="header-admin-name">Administrator</span>
+
+            <button id="logout-btn" class="logout-btn" type="button">
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- DASHBOARD LAYOUT -->
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar" id="admin-sidebar">
+
+            <div class="admin-profile">
+
+                <div class="profile-avatar" id="admin-avatar">
+                    A
+                </div>
+
+                <h3 id="sidebar-admin-name">Administrator</h3>
+
+                <p>System Administrator</p>
+
+            </div>
+
+
+            <!-- SIDEBAR NAVIGATION -->
+            <nav class="sidebar-nav">
+
+                <a href="#overview" class="active">
+                    <span>▦</span> Overview
+                </a>
+
+                <a href="#users">
+                    <span>👥</span> User Management
+                </a>
+
+                <a href="#organizers">
+                    <span>🧑‍💼</span> Organizer Approval
+                </a>
+
+                <a href="#events">
+                    <span>📅</span> Event Management
+                </a>
+
+                <a href="#certificates">
+                    <span>📜</span> Certificate Management
+                </a>
+
+                <a href="#feedback">
+                    <span>💬</span> Feedback Management
+                </a>
+
+                <a href="#system">
+                    <span>⚙</span> System Information
+                </a>
+
+                <a href="index.html">
+                    <span>⌂</span> Main Website
+                </a>
+
+            </nav>
+
+
+            <button id="sidebar-logout-btn" class="sidebar-logout-btn" type="button">
+                Logout
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="admin-main">
+
+
+            <!-- =====================================
+                 OVERVIEW SECTION
+            ====================================== -->
+
+            <section id="overview" class="dashboard-section">
+
+                <div class="welcome-section">
+
+                    <div>
+
+                        <p class="section-label">ADMIN PANEL</p>
+
+                        <h1>
+                            Welcome back,
+                            <span id="welcome-admin-name">
+                                Administrator
+                            </span>
+                        </h1>
+
+                        <p>
+                            Manage users, events and your
+                            college event management system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <h3>Total Users</h3>
+                        <p id="total-users">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🎓</div>
+                        <h3>Total Students</h3>
+                        <p id="total-students">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🧑‍💼</div>
+                        <h3>Total Organizers</h3>
+                        <p id="total-organizers">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <h3>Total Events</h3>
+                        <p id="total-events">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <h3>Active Users</h3>
+                        <p id="active-users">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🚫</div>
+                        <h3>Inactive Users</h3>
+                        <p id="inactive-users">--</p>
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+                <div class="content-card">
+
+                    <div class="section-heading">
+
+                        <h2>Quick Actions</h2>
+
+                        <p>Manage your CEMS platform.</p>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <a href="#users" class="action-card">
+                            <span>👥</span>
+                            <h3>Manage Users</h3>
+                            <p>View and manage student and organizer accounts.</p>
+                        </a>
+
+                        <a href="#organizers" class="action-card">
+                            <span>🧑‍💼</span>
+                            <h3>Organizer Approval</h3>
+                            <p>Review and approve new organizer registrations.</p>
+                        </a>
+
+                        <a href="#events" class="action-card">
+                            <span>📅</span>
+                            <h3>Manage Events</h3>
+                            <p>View events created on the platform.</p>
+                        </a>
+
+                        <a href="#feedback" class="action-card">
+                            <span>💬</span>
+                            <h3>Manage Feedback</h3>
+                            <p>Review and approve student experiences.</p>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 USER MANAGEMENT SECTION
+            ====================================== -->
+
+            <section id="users" class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="section-label">USER ADMINISTRATION</p>
+                        <h2>User Management</h2>
+                        <p>
+                            View, search, filter and manage
+                            registered users.
+                        </p>
+                    </div>
+
+                    <button id="refresh-users" class="secondary-btn" type="button">
+                        Refresh Users
+                    </button>
+
+                </div>
+
+
+                <!-- USER FILTERS -->
+                <div class="content-card">
+
+                    <div class="filter-controls">
+
+                        <div class="form-group">
+
+                            <label for="user-search">Search Users</label>
+
+                            <input
+                                type="search"
+                                id="user-search"
+                                placeholder="Search by name or email..."
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="user-role-filter">Filter by Role</label>
+
+                            <select id="user-role-filter">
+                                <option value="all">All Users</option>
+                                <option value="Student">Students</option>
+                                <option value="Organizer">Organizers</option>
+                                <option value="Admin">Admins</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="user-status-filter">Filter by Status</label>
+
+                            <select id="user-status-filter">
+                                <option value="all">All Statuses</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- USERS TABLE -->
+                <div class="content-card table-card">
+
+                    <div class="table-heading">
+                        <h3>Registered Users</h3>
+                        <span id="users-count">0 Users</span>
+                    </div>
+
+                    <div id="users-message" class="message-box"></div>
+
+                    <div class="table-wrapper">
+
+                        <table id="users-table">
+
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Account Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="users-table-body">
+                                <tr>
+                                    <td colspan="6">User data will appear here.</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 ORGANIZER APPROVAL SECTION
+            ====================================== -->
+
+            <section id="organizers" class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label">ORGANIZER ADMINISTRATION</p>
+
+                        <h2>Organizer Approval</h2>
+
+                        <p>
+                            Review organizer registrations and approve
+                            or reject their account requests.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="refresh-organizers"
+                        class="secondary-btn"
+                        type="button"
+                    >
+                        Refresh Organizers
+                    </button>
+
+                </div>
+
+
+                <!-- PENDING ORGANIZER STATISTICS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">⏳</div>
+
+                        <h3>Pending Applications</h3>
+
+                        <p id="pending-organizers-count">--</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ORGANIZER APPLICATIONS TABLE -->
+                <div class="content-card table-card">
+
+                    <div class="table-heading">
+
+                        <h3>Pending Organizer Applications</h3>
+
+                        <span id="organizers-count">
+                            0 Applications
+                        </span>
+
+                    </div>
+
+
+                    <div id="organizers-message" class="message-box"></div>
+
+
+                    <div class="table-wrapper">
+
+                        <table id="organizers-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Organization</th>
+                                    <th>Designation</th>
+                                    <th>Registered On</th>
+                                    <th>Actions</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="organizers-table-body">
+
+                                <tr>
+                                    <td colspan="7">
+                                        Pending organizer applications will appear here.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 EVENT MANAGEMENT SECTION
+            ====================================== -->
+
+            <section id="events" class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="section-label">EVENT ADMINISTRATION</p>
+                        <h2>Event Management</h2>
+                        <p>
+                            View and monitor events created
+                            by organizers.
+                        </p>
+                    </div>
+
+                    <button id="refresh-events" class="secondary-btn" type="button">
+                        Refresh Events
+                    </button>
+
+                </div>
+
+
+                <!-- EVENT FILTERS -->
+                <div class="content-card">
+
+                    <div class="filter-controls">
+
+                        <div class="form-group">
+
+                            <label for="event-search">Search Events</label>
+
+                            <input
+                                type="search"
+                                id="event-search"
+                                placeholder="Search by event title..."
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="event-status-filter">Event Status</label>
+
+                            <select id="event-status-filter">
+                                <option value="all">All Events</option>
+                                <option value="Published">Published</option>
+                                <option value="Draft">Draft</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENTS TABLE -->
+                <div class="content-card table-card">
+
+                    <div class="table-heading">
+                        <h3>All College Events</h3>
+                        <span id="events-count">0 Events</span>
+                    </div>
+
+                    <div id="events-message" class="message-box"></div>
+
+                    <div class="table-wrapper">
+
+                        <table id="events-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Event Title</th>
+                                    <th>Organizer</th>
+                                    <th>Category</th>
+                                    <th>Venue</th>
+                                    <th>Event Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="events-table-body">
+                                <tr>
+                                    <td colspan="7">Event data will appear here.</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 CERTIFICATE MANAGEMENT SECTION
+            ====================================== -->
+
+            <section id="certificates" class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Certificate Management</h2>
+                        <p>
+                            View and manage certificates issued to students.
+                        </p>
+                    </div>
+
+                    <button
+                        id="refresh-certificates"
+                        class="btn btn-primary"
+                        type="button"
+                    >
+                        Refresh Certificates
+                    </button>
+
+                </div>
+
+
+                <div id="certificates-message" class="message-box"></div>
+
+
+                <!-- CERTIFICATE FILTERS -->
+                <div class="filter-controls">
+
+                    <input
+                        type="text"
+                        id="certificate-search"
+                        placeholder="Search by student or certificate number"
+                    >
+
+                    <select id="certificate-status-filter">
+                        <option value="">All Certificate Statuses</option>
+                        <option value="Active">Active</option>
+                        <option value="Under Review">Under Review</option>
+                        <option value="Revoked">Revoked</option>
+                    </select>
+
+                </div>
+
+
+                <!-- CERTIFICATES TABLE -->
+                <div class="table-card">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Certificate No.</th>
+                                    <th>Student</th>
+                                    <th>Email</th>
+                                    <th>Event</th>
+                                    <th>Attendance</th>
+                                    <th>Status</th>
+                                    <th>Issued On</th>
+                                    <th>Revoked On</th>
+                                    <th>Revocation Reason</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="certificates-table-body">
+                                <tr>
+                                    <td colspan="10">Loading certificates...</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 FEEDBACK MANAGEMENT SECTION
+            ====================================== -->
+
+            <section id="feedback" class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="section-label">STUDENT FEEDBACK</p>
+                        <h2>Feedback Management</h2>
+                        <p>
+                            Review student experiences and approve
+                            or reject feedback before it appears on the homepage.
+                        </p>
+                    </div>
+
+                    <button
+                        id="refresh-feedback"
+                        class="secondary-btn"
+                        type="button"
+                    >
+                        Refresh Feedback
+                    </button>
+
+                </div>
+
+
+                <!-- FEEDBACK STATISTICS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <h3>Total Feedback</h3>
+                        <p id="total-feedback">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <h3>Pending</h3>
+                        <p id="pending-feedback">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <h3>Approved</h3>
+                        <p id="approved-feedback">--</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">❌</div>
+                        <h3>Rejected</h3>
+                        <p id="rejected-feedback">--</p>
+                    </div>
+
+                </div>
+
+
+                <!-- FEEDBACK FILTERS -->
+                <div class="content-card">
+
+                    <div class="filter-controls">
+
+                        <div class="form-group">
+
+                            <label for="feedback-search">Search Feedback</label>
+
+                            <input
+                                type="search"
+                                id="feedback-search"
+                                placeholder="Search by student name or email..."
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="feedback-status-filter">Filter by Status</label>
+
+                            <select id="feedback-status-filter">
+                                <option value="all">All Feedback</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEEDBACK TABLE -->
+                <div class="content-card table-card">
+
+                    <div class="table-heading">
+                        <h3>Submitted Student Feedback</h3>
+                        <span id="feedback-count">0 Feedback</span>
+                    </div>
+
+                    <div id="feedback-message" class="message-box"></div>
+
+                    <div class="table-wrapper">
+
+                        <table id="feedback-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Feedback ID</th>
+                                    <th>Student Name</th>
+                                    <th>Email</th>
+                                    <th>Rating</th>
+                                    <th>Experience</th>
+                                    <th>Submitted On</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="feedback-table-body">
+                                <tr>
+                                    <td colspan="8">Feedback data will appear here.</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 SYSTEM INFORMATION SECTION
+            ====================================== -->
+
+            <section id="system" class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="section-label">PLATFORM DETAILS</p>
+                        <h2>System Information</h2>
+                        <p>
+                            Basic information about CampusConnect.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="content-card system-info-card">
+
+                    <div class="info-row">
+                        <span>Application Name</span>
+                        <strong>CampusConnect</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Project</span>
+                        <strong>College Events Management System</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Backend</span>
+                        <strong>Python Flask</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Database</span>
+                        <strong>Supabase PostgreSQL</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Admin Panel</span>
+                        <strong>Administrator Access</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 FOOTER
+            ====================================== -->
+
+            <footer class="admin-footer">
+
+                <p>
+                    © <span id="footer-year"></span>
+                    CampusConnect. All rights reserved.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | CampusConnect</title>
+    <meta name="description" content="Login or register to explore college events and campus activities.">
+
+    <link rel="stylesheet" href="assets/css/login.css">
+    <script src="assets/js/config.js" defer></script>
+    <script src="assets/js/login.js" defer></script>
+</head>
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="login-header">
+        <a href="index.html" class="brand-logo">
+            <span class="brand-icon">C</span>
+            <span>Campus<span class="brand-highlight">Connect</span></span>
+        </a>
+
+        <a href="index.html" class="back-home">
+            <span aria-hidden="true">&larr;</span> Back to Home
+        </a>
+    </header>
+
+    <main class="auth-main">
+
+        <section class="auth-card" aria-labelledby="auth-title">
+
+            <div class="auth-heading">
+                <div class="welcome-icon" aria-hidden="true">&#10022;</div>
+
+                <p class="eyebrow">YOUR CAMPUS. YOUR COMMUNITY.</p>
+
+                <h1 id="auth-title">Welcome <span>Back!</span></h1>
+
+                <p class="auth-subtitle" id="auth-subtitle">
+                    Login to discover events and campus opportunities.
+                </p>
+            </div>
+
+            <div class="auth-tabs" role="tablist" aria-label="Account options">
+
+                <button
+                    type="button"
+                    class="auth-tab active"
+                    id="login-tab"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="login-panel">
+                    Login
+                </button>
+
+                <button
+                    type="button"
+                    class="auth-tab"
+                    id="register-tab"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="register-panel">
+                    Register
+                </button>
+
+            </div>
+
+            <div
+                class="form-message"
+                id="form-message"
+                role="status"
+                aria-live="polite"
+                hidden>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form id="login-form" class="auth-form" novalidate>
+
+                <div class="form-group">
+                    <label for="login-email">College Email</label>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required>
+
+                    <small class="field-error" id="login-email-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label for="login-password">Password</label>
+
+                        <button
+                            type="button"
+                            class="text-button"
+                            id="forgot-password">
+                            Forgot password?
+                        </button>
+                    </div>
+
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="login-password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="login-password"
+                            aria-label="Show password"
+                            aria-pressed="false">
+                            Show
+                        </button>
+                    </div>
+
+                    <small class="field-error" id="login-password-error"></small>
+                </div>
+
+                <label class="remember-option">
+                    <input type="checkbox" id="remember-me" name="remember">
+                    <span>Remember me</span>
+                </label>
+
+                <button type="submit" class="primary-button">
+                    Login to Your Account <span aria-hidden="true">&rarr;</span>
+                </button>
+
+                <p class="switch-prompt">
+                    New to CampusConnect?
+                    <button type="button" class="inline-switch" data-switch="register">
+                        Create an account
+                    </button>
+                </p>
+
+            </form>
+
+
+            <!-- REGISTER FORM -->
+            <form id="register-form" class="auth-form" hidden novalidate>
+
+                <!-- ACCOUNT TYPE -->
+                <div class="form-group">
+                    <label for="register-account-type">Register As</label>
+
+                    <select
+                        id="register-account-type"
+                        name="accountType"
+                        required>
+
+                        <option value="Student" selected>Student</option>
+                        <option value="Organizer">Event Organizer</option>
+
+                    </select>
+
+                    <small class="field-error" id="register-account-type-error"></small>
+                </div>
+
+
+                <!-- COMMON FIELDS -->
+
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="register-name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        minlength="2"
+                        required>
+
+                    <small class="field-error" id="register-name-error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="register-email">College Email</label>
+
+                    <input
+                        type="email"
+                        id="register-email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required>
+
+                    <small class="field-error" id="register-email-error"></small>
+                </div>
+
+
+                <!-- STUDENT-ONLY FIELDS -->
+
+                <div id="student-fields">
+
+                    <div class="form-group">
+                        <label for="register-student-id">PRN</label>
+
+                        <input
+                            type="text"
+                            id="register-student-id"
+                            name="studentId"
+                            placeholder="Enter your PRN"
+                            autocomplete="off"
+                            maxlength="30"
+                            required>
+
+                        <small class="field-error" id="register-student-id-error"></small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="register-department">Department</label>
+
+                        <select
+                            id="register-department"
+                            name="department"
+                            required>
+
+                            <option value="">Select your department</option>
+                            <option value="Computer Engineering">Computer Engineering</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Electronics and Telecommunication Engineering">Electronics and Telecommunication Engineering</option>
+                            <option value="Other">Other</option>
+
+                        </select>
+
+                        <small class="field-error" id="register-department-error"></small>
+                    </div>
+
+                </div>
+
+
+                <!-- ORGANIZER-ONLY FIELDS -->
+
+                <div id="organizer-fields" hidden>
+
+                    <div class="form-group">
+                        <label for="register-organization-name">Organization Name</label>
+
+                        <input
+                            type="text"
+                            id="register-organization-name"
+                            name="organizationName"
+                            placeholder="Enter club or organization name"
+                            maxlength="150">
+
+                        <small class="field-error" id="register-organization-name-error"></small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="register-designation">Designation</label>
+
+                        <input
+                            type="text"
+                            id="register-designation"
+                            name="designation"
+                            placeholder="e.g. Club President, Event Coordinator"
+                            maxlength="100">
+
+                        <small class="field-error" id="register-designation-error"></small>
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+                    <label for="register-password">Create Password</label>
+
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="register-password"
+                            name="password"
+                            placeholder="At least 8 characters"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required>
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="register-password"
+                            aria-label="Show password"
+                            aria-pressed="false">
+                            Show
+                        </button>
+                    </div>
+
+                    <small class="field-hint">
+                        Use at least 8 characters.
+                    </small>
+
+                    <small class="field-error" id="register-password-error"></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="register-confirm-password">Confirm Password</label>
+
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="register-confirm-password"
+                            name="confirmPassword"
+                            placeholder="Re-enter your password"
+                            autocomplete="new-password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="register-confirm-password"
+                            aria-label="Show password"
+                            aria-pressed="false">
+                            Show
+                        </button>
+                    </div>
+
+                    <small class="field-error" id="register-confirm-password-error"></small>
+                </div>
+
+
+                <!-- TERMS -->
+
+                <label class="remember-option terms-option">
+                    <input type="checkbox" id="accept-terms" required>
+
+                    <span>
+                        I agree to the
+                        <a href="terms.html">Terms &amp; Conditions</a>
+                        and
+                        <a href="privacy.html">Privacy Policy</a>.
+                    </span>
+                </label>
+
+                <small class="field-error" id="terms-error"></small>
+
+
+                <button type="submit" class="primary-button" id="register-submit-button">
+                    Create Account <span aria-hidden="true">&rarr;</span>
+                </button>
+
+
+                <p class="switch-prompt">
+                    Already registered?
+                    <button type="button" class="inline-switch" data-switch="login">
+                        Login here
+                    </button>
+                </p>
+
+            </form>
+
+
+            <div class="auth-bottom">
+                <span class="security-icon" aria-hidden="true">&#128274;</span>
+                <span>Your campus community starts here.</span>
+            </div>
+
+        </section>
+
+        <p class="page-footer">
+            &copy; <span id="current-year"></span> CampusConnect.
+            Made for campus life.
+        </p>
+
+    </main>
+
+</body>
+</html>

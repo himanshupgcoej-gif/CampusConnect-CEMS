@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | CampusConnect</title>
+
+    <link rel="stylesheet" href="assets/css/student-dashboard.css">
+
+    <script src="assets/js/config.js" defer></script>
+    <script src="assets/js/student-dashboard.js" defer></script>
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+
+        <a href="index.html" class="brand">
+            <div class="brand-icon">C</div>
+            <div>
+                <h2>CampusConnect</h2>
+                <p>Student Portal</p>
+            </div>
+        </a>
+
+        <div class="header-right">
+            <span id="header-user-name">Student</span>
+            <button id="logout-btn" class="logout-btn">Logout</button>
+        </div>
+
+    </header>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-user">
+                <div class="user-avatar" id="user-avatar">S</div>
+                <h3 id="sidebar-user-name">Student</h3>
+                <p>Student Account</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#overview" class="nav-link active">⌂ Dashboard</a>
+                <a href="#events" class="nav-link">▦ Explore Events</a>
+                <a href="#registrations" class="nav-link">▤ My Registrations</a>
+                <a href="#certificates" class="nav-link">♧ My Certificates</a>
+                <a href="index.html" class="nav-link">← Home Page</a>
+
+            </nav>
+
+            <button id="sidebar-logout-btn" class="sidebar-logout">
+                Logout
+            </button>
+
+        </aside>
+
+        <main class="dashboard-main">
+
+            <section id="overview" class="welcome-section">
+
+                <div>
+                    <p class="eyebrow">STUDENT DASHBOARD</p>
+                    <h1>Welcome back, <span id="welcome-name">Student</span>!</h1>
+                    <p>Explore campus events and manage your activities.</p>
+                </div>
+
+                <a href="#events" class="primary-btn">Explore Events →</a>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats-grid">
+
+                <article class="stat-card">
+                    <span class="stat-icon">▦</span>
+                    <p>Total Registrations</p>
+                    <h2 id="total-registrations">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-icon">◷</span>
+                    <p>Pending</p>
+                    <h2 id="pending-registrations">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-icon">✓</span>
+                    <p>Approved</p>
+                    <h2 id="approved-registrations">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <span class="stat-icon">♧</span>
+                    <p>Certificates</p>
+                    <h2 id="total-certificates">0</h2>
+                </article>
+
+            </section>
+
+
+            <!-- EVENTS -->
+
+            <section id="events" class="dashboard-section">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">DISCOVER</p>
+                        <h2>Explore Events</h2>
+                        <p>Find events happening on your campus.</p>
+                    </div>
+
+                    <button id="refresh-events" class="secondary-btn">
+                        ↻ Refresh
+                    </button>
+                </div>
+
+                <div id="events-message" class="message"></div>
+
+                <div id="events-container" class="events-grid">
+                    <p class="loading">Loading events...</p>
+                </div>
+
+            </section>
+
+
+            <!-- REGISTRATIONS -->
+
+            <section id="registrations" class="dashboard-section">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">YOUR ACTIVITY</p>
+                        <h2>My Registrations</h2>
+                        <p>Track your event registration status.</p>
+                    </div>
+
+                    <button id="refresh-registrations" class="secondary-btn">
+                        ↻ Refresh
+                    </button>
+                </div>
+
+                <div id="registrations-message" class="message"></div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Category</th>
+                                <th>Registration Date</th>
+                                <th>Approval</th>
+                                <th>Attendance</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="registrations-table">
+                            <tr>
+                                <td colspan="5">Loading registrations...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+
+            <!-- CERTIFICATES -->
+
+            <section id="certificates" class="dashboard-section">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">ACHIEVEMENTS</p>
+                        <h2>My Certificates</h2>
+                        <p>View and download your earned certificates.</p>
+                    </div>
+
+                    <button id="refresh-certificates" class="secondary-btn">
+                        ↻ Refresh
+                    </button>
+                </div>
+
+                <div id="certificates-message" class="message"></div>
+
+                <div id="certificates-container" class="certificates-grid">
+                    <p class="loading">Loading certificates...</p>
+                </div>
+
+            </section>
+
+            <footer class="dashboard-footer">
+                © <span id="footer-year"></span> CampusConnect · GCOEJ
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

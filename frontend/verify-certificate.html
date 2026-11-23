@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Verification | CampusConnect</title>
+    <link rel="stylesheet" href="assets/css/verify-certificate.css">
+
+    
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="college-header">
+        <h1>Government College of Engineering, Jalgaon</h1>
+        <p>College Events Management System</p>
+    </div>
+
+    <div class="card">
+
+        <div class="card-top">
+            <div class="eyebrow">OFFICIAL VERIFICATION</div>
+            <h2>Certificate Verification</h2>
+            <p>Verify the authenticity and current status of a certificate</p>
+        </div>
+
+        <div class="content">
+
+            <div id="verification-result" class="loading">
+                <div class="spinner"></div>
+                <p>Verifying certificate...</p>
+            </div>
+
+            <div id="certificate-details" style="display: none;">
+
+                <h3 class="section-title">
+                    Certificate Information
+                </h3>
+
+                <div class="details">
+
+                    <div class="detail">
+                        <label>Certificate Number</label>
+                        <p id="certificate-number"></p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Certificate Status</label>
+                        <p id="certificate-status"></p>
+                    </div>
+
+                    <div class="detail full">
+                        <label>Student Name</label>
+                        <p id="student-name"></p>
+                    </div>
+
+                    <div class="detail full">
+                        <label>Event Name</label>
+                        <p id="event-title"></p>
+                    </div>
+
+                    <div class="detail full">
+                        <label>Venue</label>
+                        <p id="venue"></p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Event Date</label>
+                        <p id="event-date"></p>
+                    </div>
+
+                    <div class="detail">
+                        <label>Issue Date</label>
+                        <p id="issued-at"></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer">
+            Official Certificate Verification System<br>
+            Government College of Engineering, Jalgaon
+        </div>
+
+    </div>
+
+</div>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/verify-certificate.js"></script>
+
+
+</body>
+</html>

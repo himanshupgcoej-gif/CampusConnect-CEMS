@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b12">
+    <title>Explore Events | College Events Management System</title>
+    <link rel="stylesheet" href="assets/css/event.css">
+    <script src="assets/js/event.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <img src="assets/image/logo.png.png" alt="College Events Logo">
+            <div class="brand-text">
+                <h1>College Events</h1>
+                <p>Management System</p>
+            </div>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="event.html" class="nav-active">Explore Events</a>
+            <a href="login.html" class="nav-login">Login</a>
+        </nav>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Open menu" aria-expanded="false"
+                aria-controls="mobileMenu">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="menu-heading">
+            <div>
+                <h2>College Events</h2>
+                <p>Management System</p>
+            </div>
+            <button id="menuClose" class="menu-close"
+                    aria-label="Close menu">&times;</button>
+        </div>
+        <nav class="menu-links">
+            <a href="index.html">⌂ &nbsp; Home</a>
+            <a href="event.html">▦ &nbsp; Explore Events</a>
+            <a href="login.html">♙ &nbsp; Login</a>
+            <a href="login.html">✦ &nbsp; Create Account</a>
+        </nav>
+        <a href="#eventList" class="menu-cta">Discover Events →</a>
+    </aside>
+
+    <main>
+        <!-- HERO -->
+        <section class="events-hero">
+            <div class="hero-glow glow-one"></div>
+            <div class="hero-glow glow-two"></div>
+
+            <div class="hero-content">
+                <span class="section-label">
+                    <span class="live-dot"></span> CAMPUS LIFE • 2026
+                </span>
+                <h2>Discover Your Next<br>
+                    <span>Campus Experience.</span>
+                </h2>
+                <p>
+                    Explore technical fests, workshops, cultural nights,
+                    sports tournaments and opportunities waiting for you.
+                </p>
+
+                <a href="#eventList" class="btn btn-primary">
+                    Explore All Events <span>→</span>
+                </a>
+
+                <div class="hero-stats">
+                    <div>
+                        <strong id="totalEvents">12</strong>
+                        <span>Events listed</span>
+                    </div>
+                    <div>
+                        <strong id="upcomingCount">12</strong>
+                        <span>Upcoming</span>
+                    </div>
+                    <div>
+                        <strong>06</strong>
+                        <span>Categories</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH -->
+        <section class="events-container" id="eventList">
+            <div class="section-heading">
+                <span class="section-label">FIND YOUR INTEREST</span>
+                <h2>Explore <span>Events</span></h2>
+                <p>Find the right event, register, and make it count.</p>
+            </div>
+
+            <div class="search-panel">
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <input type="search" id="searchInput"
+                           placeholder="Search events, venues, organizers..."
+                           aria-label="Search events">
+                    <button type="button" id="clearSearch"
+                            class="clear-search" aria-label="Clear search">×</button>
+                </label>
+                <button type="button" id="filterToggle" class="filter-toggle">
+                    ☷ Filters <span id="filterBadge" hidden>0</span>
+                </button>
+            </div>
+
+            <!-- CATEGORY CHIPS -->
+            <div class="category-chips" aria-label="Event categories">
+                <button class="category-chip active" data-category="all">All Events</button>
+                <button class="category-chip" data-category="technical">💻 Technical</button>
+                <button class="category-chip" data-category="cultural">♫ Cultural</button>
+                <button class="category-chip" data-category="sports">⚽ Sports</button>
+                <button class="category-chip" data-category="workshop">✦ Workshops</button>
+                <button class="category-chip" data-category="seminar">▤ Seminars</button>
+                <button class="category-chip" data-category="other">◈ Other</button>
+            </div>
+
+            <!-- ADVANCED FILTERS -->
+            <div class="filters-panel" id="filtersPanel">
+                <div class="filter-heading">
+                    <h3>Refine your search</h3>
+                    <button type="button" id="resetFilters" class="text-btn">
+                        Reset all
+                    </button>
+                </div>
+
+                <div class="filter-grid">
+                    <label class="field">
+                        <span>Event date</span>
+                        <select id="dateFilter">
+                            <option value="all">Any date</option>
+                            <option value="today">Today</option>
+                            <option value="week">Next 7 days</option>
+                            <option value="month">Next 30 days</option>
+                            <option value="future">All upcoming</option>
+                            <option value="past">Past events</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        <span>Event type</span>
+                        <select id="typeFilter">
+                            <option value="all">All types</option>
+                            <option value="offline">Offline</option>
+                            <option value="online">Online</option>
+                            <option value="hybrid">Hybrid</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        <span>Registration</span>
+                        <select id="availabilityFilter">
+                            <option value="all">All events</option>
+                            <option value="open">Registration open</option>
+                            <option value="limited">Limited seats</option>
+                            <option value="full">Fully booked</option>
+                            <option value="closed">Registration closed</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        <span>Organizer / department</span>
+                        <select id="organizerFilter">
+                            <option value="all">All departments</option>
+                            <option value="Computer Engineering">Computer Engineering</option>
+                            <option value="Cultural Committee">Cultural Committee</option>
+                            <option value="Sports Committee">Sports Committee</option>
+                            <option value="Innovation Cell">Innovation Cell</option>
+                            <option value="Training and Placement">Training &amp; Placement</option>
+                            <option value="Student Council">Student Council</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        <span>From date</span>
+                        <input type="date" id="fromDate">
+                    </label>
+
+                    <label class="field">
+                        <span>To date</span>
+                        <input type="date" id="toDate">
+                    </label>
+                </div>
+            </div>
+
+            <!-- SORT / VIEW -->
+            <div class="results-toolbar">
+                <p id="resultsCount" aria-live="polite">Showing events</p>
+                <div class="toolbar-actions">
+                    <label class="sort-control">
+                        <span>Sort:</span>
+                        <select id="sortFilter" aria-label="Sort events">
+                            <option value="dateAsc">Soonest first</option>
+                            <option value="dateDesc">Latest first</option>
+                            <option value="nameAsc">Name A–Z</option>
+                            <option value="seats">Most seats available</option>
+                        </select>
+                    </label>
+                    <button type="button" id="viewToggle"
+                            class="view-toggle" aria-label="Switch to list view"
+                            title="Switch view">☷</button>
+                </div>
+            </div>
+
+            <!-- ACTIVE FILTERS -->
+            <div class="active-filters" id="activeFilters"></div>
+
+            <!-- EVENT CARDS ARE CREATED BY JAVASCRIPT -->
+            <div class="events-grid" id="eventsGrid"></div>
+
+            <div class="empty-state" id="emptyState" hidden>
+                <div class="empty-icon">⌕</div>
+                <h3>No events found</h3>
+                <p>Try changing your search or removing some filters.</p>
+                <button type="button" class="btn btn-primary" id="emptyReset">
+                    Clear Filters
+                </button>
+            </div>
+
+            <div class="load-more-wrap">
+                <button type="button" id="loadMore" class="btn btn-secondary">
+                    Load More Events ↓
+                </button>
+            </div>
+        </section>
+
+        <!-- SAVED EVENTS -->
+        <section class="saved-section" id="savedSection">
+            <div class="events-container">
+                <div class="section-heading saved-heading">
+                    <span class="section-label">YOUR SHORTLIST</span>
+                    <h2>Saved <span>Events</span> <span id="savedCount" class="count-pill">0</span></h2>
+                    <p>Keep track of the events you don't want to miss.</p>
+                </div>
+                <div id="savedGrid" class="events-grid saved-grid"></div>
+                <p id="savedEmpty" class="saved-empty">
+                    No saved events yet. Tap the ♡ on any event to save it.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="events-cta">
+            <div>
+                <span class="section-label">BE PART OF CAMPUS LIFE</span>
+                <h2>Your next opportunity<br><span>starts here.</span></h2>
+                <p>Sign in to continue to event registration.</p>
+            </div>
+            <a href="login.html" class="btn btn-primary">Login to Register →</a>
+        </section>
+    </main>
+
+    <!-- EVENT DETAILS MODAL -->
+    <div class="modal-overlay" id="eventModal" hidden>
+        <section class="event-modal" role="dialog"
+                 aria-modal="true" aria-labelledby="modalTitle">
+            <button type="button" id="modalClose" class="modal-close"
+                    aria-label="Close event details">&times;</button>
+            <div id="modalVisual" class="modal-visual"></div>
+            <div class="modal-content">
+                <span id="modalCategory" class="event-category"></span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <div class="modal-details" id="modalDetails"></div>
+                <div id="modalNotice" class="modal-notice"></div>
+                <div class="modal-actions">
+                    <button type="button" id="modalSave" class="btn btn-secondary">
+                        ♡ Save Event
+                    </button>
+                    <a href="login.html" id="modalRegister" class="btn btn-primary">
+                        Login to Register →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <span class="footer-logo-icon">C</span>
+                    <span>Campus<span class="footer-logo-highlight">Connect</span></span>
+                </a>
+                <p class="footer-description">
+                    Discover college events, explore opportunities,
+                    and create unforgettable campus memories.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="event.html">Explore Events</a>
+                <a href="login.html">Login</a>
+                <a href="login.html">Create Account</a>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <a href="#eventList" data-footer-category="technical">Technical</a>
+                <a href="#eventList" data-footer-category="cultural">Cultural</a>
+                <a href="#eventList" data-footer-category="sports">Sports</a>
+                <a href="#eventList" data-footer-category="workshop">Workshops</a>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>Government College of Engineering, Jalgaon</p>
+                <a href="mailto:events@example.com">Event Support</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="footerYear"></span> GCOEJ. All rights reserved.</p>
+            <a href="index.html">Back to Home ↑</a>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

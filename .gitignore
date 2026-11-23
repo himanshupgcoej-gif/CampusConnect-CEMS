@@ -1,0 +1,34 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Local databases
+*.db
+*.sqlite3
+
+# VS Code settings
+.vscode/
+
+# Node dependencies and build output
+node_modules/
+dist/
+build/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Outdated project documentation
+/frontend/CEMS - backend.txt

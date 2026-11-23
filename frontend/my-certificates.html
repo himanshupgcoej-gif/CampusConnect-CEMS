@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Certificates | CampusConnect</title>
+
+    <link rel="stylesheet" href="assets/css/certificates.css">
+    <script src="assets/js/config.js" defer></script>
+    <script src="assets/js/certificates.js" defer></script>
+</head>
+<body>
+
+    <header class="cert-header">
+        <a href="index.html" class="brand">Campus<span>Connect</span></a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="my-certificates.html" class="active">My Certificates</a>
+            <button id="logout-btn" class="logout-btn" type="button">Logout</button>
+        </nav>
+    </header>
+
+    <main class="cert-main">
+        <section class="page-intro">
+            <p class="eyebrow">STUDENT PORTAL</p>
+            <h1>My <span>Certificates</span></h1>
+            <p>View and download certificates earned by participating in campus events.</p>
+        </section>
+
+        <section class="cert-summary">
+            <div>
+                <p class="summary-label">Certificates Earned</p>
+                <h2 id="certificate-count">0</h2>
+            </div>
+            <div class="summary-icon" aria-hidden="true">🏆</div>
+        </section>
+
+        <div id="page-message" class="page-message" role="status" hidden></div>
+
+        <section class="certificates-section">
+            <div class="section-heading">
+                <h2>Your Certificates</h2>
+                <button id="refresh-btn" class="refresh-btn" type="button">
+                    ↻ Refresh
+                </button>
+            </div>
+
+            <div id="loading-state" class="state-card">
+                Loading your certificates...
+            </div>
+
+            <div id="empty-state" class="state-card" hidden>
+                <div class="empty-icon">📜</div>
+                <h3>No certificates yet</h3>
+                <p>
+                    Certificates will appear here when an organizer issues
+                    them for events you have attended.
+                </p>
+                
+                <a href="index.html#upcoming-events" class="browse-btn">
+                    Explore Events
+                </a>
+            </div>
+
+            <div id="certificate-list" class="certificate-list"></div>
+        </section>
+    </main>
+
+    <footer class="cert-footer">
+        <p>© <span id="current-year"></span> CampusConnect. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
