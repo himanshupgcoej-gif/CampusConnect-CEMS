@@ -17,6 +17,7 @@ from routes.auth import role_required
 
 import psycopg2
 import uuid
+import os
 
 
 certificates_bp = Blueprint(
@@ -911,10 +912,17 @@ def download_certificate(certificate_id):
         # QR CODE FOR PUBLIC VERIFICATION
         # =================================================
 
+        frontend_url = os.getenv(
+            "CEMS_FRONTEND_BASE_URL",
+            "http://127.0.0.1:3000"
+        ).rstrip("/")
+
+
         verification_url = (
-            "http://127.0.0.1:3000/frontend/verify-certificate.html"
+            f"{frontend_url}/verify-certificate.html"
             f"?certificate={certificate_number}"
         )
+
 
         qr_code = QrCodeWidget(verification_url)
 
