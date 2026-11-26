@@ -512,3 +512,88 @@ document.addEventListener("DOMContentLoaded", () => {
     loadCertificates();
 
 });
+
+
+/* ========================================
+   MOBILE NAVIGATION DRAWER
+======================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const drawerToggle = document.getElementById("drawer-toggle");
+    const sidebar = document.getElementById("student-sidebar");
+    const overlay = document.getElementById("drawer-overlay");
+
+    const navLinks = document.querySelectorAll(
+        ".sidebar-nav .nav-link"
+    );
+
+    if (!drawerToggle || !sidebar || !overlay) return;
+
+    function openDrawer() {
+
+        sidebar.classList.add("drawer-open");
+        overlay.classList.add("active");
+
+        document.body.classList.add("drawer-active");
+
+        drawerToggle.setAttribute("aria-expanded", "true");
+        drawerToggle.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        drawerToggle.textContent = "✕";
+    }
+
+    function closeDrawer() {
+
+        sidebar.classList.remove("drawer-open");
+        overlay.classList.remove("active");
+
+        document.body.classList.remove("drawer-active");
+
+        drawerToggle.setAttribute("aria-expanded", "false");
+        drawerToggle.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        drawerToggle.textContent = "☰";
+    }
+
+    drawerToggle.addEventListener("click", () => {
+
+        if (sidebar.classList.contains("drawer-open")) {
+            closeDrawer();
+        } else {
+            openDrawer();
+        }
+
+    });
+
+    overlay.addEventListener("click", closeDrawer);
+
+    navLinks.forEach(link => {
+
+        link.addEventListener("click", closeDrawer);
+
+    });
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape") {
+            closeDrawer();
+        }
+
+    });
+
+    window.addEventListener("resize", () => {
+
+        if (window.innerWidth > 650) {
+            closeDrawer();
+        }
+
+    });
+
+});

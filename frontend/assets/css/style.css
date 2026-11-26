@@ -2444,3 +2444,155 @@ button {
         height: 40px;
     }
 }
+
+
+/* MOBILE NAVIGATION DRAWER */
+
+.mobile-menu {
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.menu-overlay {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   MOBILE HAMBURGER BUTTON FIX
+========================================= */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 8px;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+    z-index: 1002;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 26px;
+    height: 3px;
+
+    background: var(--text, #18233d);
+
+    border-radius: 5px;
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger animation */
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Show hamburger on mobile */
+
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+}
+
+/* =====================================
+   MOBILE HAMBURGER MENU - FORCE DISPLAY
+===================================== */
+
+@media screen and (max-width: 900px) {
+
+    .site-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative;
+    }
+
+    .desktop-nav {
+        display: none !important;
+    }
+
+    .menu-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 6px !important;
+
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+
+        padding: 8px !important;
+        margin-left: auto !important;
+
+        background: #ffffff !important;
+        border: 1px solid #e5e0f0 !important;
+        border-radius: 10px !important;
+
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 99999 !important;
+    }
+
+    .menu-toggle span {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        width: 23px !important;
+        height: 3px !important;
+        min-height: 3px !important;
+
+        background: #7652d6 !important;
+        border-radius: 5px !important;
+    }
+}

@@ -11,11 +11,18 @@
     --border: #e5e0f0;
     --text: #18233d;
     --muted: #718096;
+
     --purple: #7652d6;
     --blue: #398bd8;
+
     --green: #16a36a;
     --red: #dc4c64;
 }
+
+
+/* ========================================
+   GLOBAL STYLES
+======================================== */
 
 * {
     margin: 0;
@@ -35,7 +42,8 @@ body {
     line-height: 1.6;
 }
 
-button, a {
+button,
+a {
     font: inherit;
 }
 
@@ -48,6 +56,7 @@ button {
     cursor: pointer;
 }
 
+
 /* ========================================
    HEADER
 ======================================== */
@@ -55,14 +64,18 @@ button {
 .dashboard-header {
     min-height: 75px;
     padding: 0 5%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     background: rgba(255, 255, 255, 0.96);
     border-bottom: 1px solid var(--border);
+
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+
     backdrop-filter: blur(14px);
 }
 
@@ -75,13 +88,22 @@ button {
 .brand-icon {
     width: 42px;
     height: 42px;
+
     display: grid;
     place-items: center;
+
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--purple), #5968ee);
+
+    background: linear-gradient(
+        135deg,
+        var(--purple),
+        #5968ee
+    );
+
     color: white;
     font-size: 24px;
     font-weight: bold;
+
     box-shadow: 0 5px 15px rgba(118, 82, 214, 0.2);
 }
 
@@ -100,21 +122,28 @@ button {
     display: flex;
     align-items: center;
     gap: 20px;
+
     font-size: 14px;
     color: #526078;
 }
 
-/* Logout buttons */
+
+/* ========================================
+   LOGOUT BUTTONS
+======================================== */
 
 .logout-btn,
 .sidebar-logout {
     border: 1px solid #f1cbd2;
     color: #c43e58;
     background: #fff4f5;
+
     padding: 10px 17px;
     border-radius: 8px;
+
     font-size: 13px;
     font-weight: 600;
+
     transition: 0.2s ease;
 }
 
@@ -123,6 +152,30 @@ button {
     background: #ffe6e9;
     border-color: #e9aab6;
 }
+
+
+/* ========================================
+   MOBILE DRAWER BUTTON
+======================================== */
+
+.drawer-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: white;
+    color: var(--purple);
+
+    font-size: 23px;
+}
+
 
 /* ========================================
    DASHBOARD LAYOUT
@@ -133,37 +186,60 @@ button {
     min-height: calc(100vh - 75px);
 }
 
+
 /* ========================================
    SIDEBAR
 ======================================== */
 
 .sidebar {
     width: 250px;
+
     background: var(--surface);
     border-right: 1px solid var(--border);
+
     padding: 28px 17px;
+
     display: flex;
     flex-direction: column;
+
     flex-shrink: 0;
 }
 
+
+/* ========================================
+   STUDENT PROFILE
+======================================== */
+
 .sidebar-user {
     text-align: center;
+
     padding-bottom: 28px;
+
     border-bottom: 1px solid var(--border);
 }
 
 .user-avatar {
     width: 65px;
     height: 65px;
+
     display: grid;
     place-items: center;
+
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--purple), var(--blue));
+
+    background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--blue)
+    );
+
     color: white;
+
     font-size: 25px;
     font-weight: bold;
+
     margin: 0 auto 12px;
+
     box-shadow: 0 5px 18px rgba(118, 82, 214, 0.2);
 }
 
@@ -177,18 +253,28 @@ button {
     margin-top: 6px;
 }
 
+
+/* ========================================
+   SIDEBAR NAVIGATION
+======================================== */
+
 .sidebar-nav {
     display: grid;
     gap: 9px;
+
     margin-top: 25px;
 }
 
 .nav-link {
     padding: 13px 12px;
+
     border-radius: 9px;
+
     color: #64748b;
+
     font-size: 14px;
     font-weight: 500;
+
     transition: 0.2s ease;
 }
 
@@ -202,6 +288,7 @@ button {
     margin-top: auto;
 }
 
+
 /* ========================================
    MAIN CONTENT
 ======================================== */
@@ -209,8 +296,10 @@ button {
 .dashboard-main {
     flex: 1;
     min-width: 0;
+
     padding: 35px 4%;
 }
+
 
 /* ========================================
    WELCOME SECTION
@@ -220,20 +309,24 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     gap: 20px;
     margin-bottom: 30px;
 }
 
 .eyebrow {
     color: var(--purple);
+
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 2px;
+
     margin-bottom: 10px;
 }
 
 .welcome-section h1 {
     font-size: clamp(24px, 3vw, 34px);
+
     margin-bottom: 9px;
     line-height: 1.3;
 }
@@ -247,6 +340,7 @@ button {
     font-size: 14px;
 }
 
+
 /* ========================================
    BUTTONS
 ======================================== */
@@ -256,29 +350,44 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 8px;
     padding: 12px 17px;
+
     font-size: 13px;
     font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
 }
 
 .primary-btn {
-    background: linear-gradient(110deg, #7652d6, #5968ee);
+    background: linear-gradient(
+        110deg,
+        #7652d6,
+        #5968ee
+    );
+
     color: white;
     border: 0;
+
     white-space: nowrap;
+
     box-shadow: 0 5px 15px rgba(118, 82, 214, 0.16);
 }
 
 .primary-btn:hover {
     transform: translateY(-2px);
+
     box-shadow: 0 8px 20px rgba(118, 82, 214, 0.25);
 }
 
 .secondary-btn {
     background: white;
     color: var(--purple);
+
     border: 1px solid #ded6f2;
 }
 
@@ -293,13 +402,16 @@ button {
     transform: none;
 }
 
+
 /* ========================================
    STATISTICS CARDS
 ======================================== */
 
 .stats-grid {
     display: grid;
+
     grid-template-columns: repeat(4, minmax(0, 1fr));
+
     gap: 16px;
     margin-bottom: 42px;
 }
@@ -307,14 +419,20 @@ button {
 .stat-card {
     background: var(--surface);
     border: 1px solid var(--border);
+
     border-radius: 13px;
     padding: 21px;
+
     box-shadow: 0 5px 18px rgba(40, 30, 80, 0.035);
-    transition: transform 0.2s, box-shadow 0.2s;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
 }
 
 .stat-card:hover {
     transform: translateY(-3px);
+
     box-shadow: 0 10px 25px rgba(40, 30, 80, 0.07);
 }
 
@@ -325,6 +443,7 @@ button {
 
 .stat-card p {
     color: var(--muted);
+
     font-size: 13px;
     margin: 13px 0 7px;
 }
@@ -333,6 +452,7 @@ button {
     font-size: 28px;
     color: var(--text);
 }
+
 
 /* ========================================
    DASHBOARD SECTIONS
@@ -347,6 +467,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 15px;
     margin-bottom: 22px;
 }
@@ -361,6 +482,7 @@ button {
     font-size: 13px;
 }
 
+
 /* ========================================
    EVENTS AND CERTIFICATES
 ======================================== */
@@ -368,7 +490,12 @@ button {
 .events-grid,
 .certificates-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(240px, 1fr)
+    );
+
     gap: 17px;
 }
 
@@ -376,26 +503,39 @@ button {
 .certificate-card {
     background: var(--surface);
     border: 1px solid var(--border);
+
     border-radius: 13px;
     padding: 20px;
+
     min-width: 0;
+
     box-shadow: 0 5px 18px rgba(40, 30, 80, 0.035);
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        border-color 0.2s;
 }
 
 .event-card:hover,
 .certificate-card:hover {
     transform: translateY(-3px);
+
     border-color: #d5c9f0;
+
     box-shadow: 0 10px 25px rgba(40, 30, 80, 0.07);
 }
 
 .event-category {
     display: inline-block;
+
     color: #7652d6;
     background: #f0edfa;
+
     padding: 6px 9px;
+
     border-radius: 5px;
+
     font-size: 10px;
     font-weight: bold;
     text-transform: uppercase;
@@ -405,14 +545,17 @@ button {
 .certificate-card h3 {
     font-size: 17px;
     margin: 15px 0 10px;
+
     overflow-wrap: anywhere;
 }
 
 .event-card p,
 .certificate-card p {
     color: var(--muted);
+
     font-size: 13px;
     line-height: 1.7;
+
     margin-bottom: 7px;
 }
 
@@ -426,14 +569,18 @@ button {
     cursor: not-allowed;
 }
 
+
 /* ========================================
    STATUS BADGES
 ======================================== */
 
 .status {
     display: inline-block;
+
     padding: 5px 9px;
+
     border-radius: 5px;
+
     font-size: 11px;
     font-weight: bold;
 }
@@ -460,38 +607,48 @@ button {
     background: #edf0f5;
 }
 
+
 /* ========================================
    REGISTRATION TABLE
 ======================================== */
 
 .table-wrapper {
     overflow-x: auto;
+
     background: var(--surface);
     border: 1px solid var(--border);
+
     border-radius: 12px;
+
     box-shadow: 0 5px 18px rgba(40, 30, 80, 0.035);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+
     min-width: 680px;
 }
 
 th,
 td {
     text-align: left;
+
     padding: 16px;
+
     border-bottom: 1px solid var(--border);
+
     font-size: 13px;
 }
 
 th {
     color: #64748b;
     background: #f7f6fc;
+
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+
     font-weight: 700;
 }
 
@@ -506,6 +663,7 @@ tbody tr:last-child td {
 tbody tr:hover {
     background: #faf9fe;
 }
+
 
 /* ========================================
    MESSAGES AND LOADING STATES
@@ -532,6 +690,7 @@ tbody tr:hover {
     padding: 22px;
 }
 
+
 /* ========================================
    CERTIFICATE DOWNLOAD BUTTON
 ======================================== */
@@ -540,20 +699,35 @@ tbody tr:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(110deg, #7652d6, #5968ee);
+
+    background: linear-gradient(
+        110deg,
+        #7652d6,
+        #5968ee
+    );
+
     color: white;
+
     border-radius: 7px;
+
     padding: 9px 12px;
+
     font-size: 12px;
     font-weight: 600;
+
     margin-top: 12px;
-    transition: transform 0.2s, box-shadow 0.2s;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
 }
 
 .download-btn:hover {
     transform: translateY(-2px);
+
     box-shadow: 0 5px 14px rgba(118, 82, 214, 0.2);
 }
+
 
 /* ========================================
    FOOTER
@@ -561,17 +735,31 @@ tbody tr:hover {
 
 .dashboard-footer {
     border-top: 1px solid var(--border);
+
     padding: 22px 0;
+
     color: var(--muted);
+
     font-size: 12px;
     text-align: center;
 }
+
+
+/* ========================================
+   DRAWER OVERLAY
+======================================== */
+
+.drawer-overlay {
+    display: none;
+}
+
 
 /* ========================================
    TABLET RESPONSIVE
 ======================================== */
 
 @media (max-width: 950px) {
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -583,14 +771,20 @@ tbody tr:hover {
     .dashboard-main {
         padding: 30px 3%;
     }
+
 }
+
 
 /* ========================================
    MOBILE RESPONSIVE
 ======================================== */
 
 @media (max-width: 650px) {
+
+    /* HEADER */
+
     .dashboard-header {
+        min-height: 68px;
         padding: 0 17px;
     }
 
@@ -598,54 +792,186 @@ tbody tr:hover {
         gap: 10px;
     }
 
-    #header-user-name {
+    /* Hide name and header logout */
+
+    #header-user-name,
+    #logout-btn {
         display: none;
     }
+
+    /* Show hamburger button */
+
+    .drawer-toggle {
+        display: flex;
+    }
+
+
+    /* DASHBOARD LAYOUT */
 
     .dashboard-layout {
         display: block;
     }
 
+
+    /* SIDEBAR DRAWER */
+
     .sidebar {
-        width: 100%;
-        padding: 12px;
-        border-right: 0;
+        position: fixed;
+
+        top: 0;
+        right: -300px;
+        left: auto;
+
+        width: 280px;
+        max-width: 85%;
+
+        height: 100vh;
+        height: 100dvh;
+
+        padding: 30px 20px;
+
+        background: var(--surface);
+
+        border-left: 1px solid var(--border);
+        border-right: none;
+
+        z-index: 102;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow-y: auto;
+
+        box-shadow: -8px 0 30px rgba(30, 20, 70, 0.08);
+
+        transition: right 0.3s ease;
+    }
+
+    /* OPEN DRAWER */
+
+    .sidebar.drawer-open {
+        right: 0;
+    }
+
+
+    /* STUDENT PROFILE */
+
+    .sidebar-user {
+        display: block;
+
+        text-align: center;
+
+        padding: 20px 0 25px;
+
         border-bottom: 1px solid var(--border);
     }
 
-    .sidebar-user {
-        display: none;
+    .user-avatar {
+        width: 70px;
+        height: 70px;
+
+        font-size: 27px;
     }
 
+    .sidebar-user h3 {
+        font-size: 17px;
+    }
+
+    .sidebar-user p {
+        font-size: 12px;
+    }
+
+
+    /* NAVIGATION */
+
     .sidebar-nav {
-        display: flex;
-        overflow-x: auto;
-        margin: 0;
-        gap: 7px;
-        padding-bottom: 2px;
+        display: grid;
+
+        overflow: visible;
+
+        margin-top: 25px;
+
+        gap: 9px;
+        padding: 0;
     }
 
     .nav-link {
-        white-space: nowrap;
-        font-size: 12px;
-        padding: 11px;
-        flex-shrink: 0;
+        display: block;
+
+        width: 100%;
+
+        white-space: normal;
+
+        font-size: 14px;
+        padding: 13px;
     }
 
+
+    /* DRAWER LOGOUT */
+
     .sidebar-logout {
-        display: none;
+        display: block;
+
+        width: 100%;
+
+        margin-top: auto;
+
+        padding: 13px;
     }
+
+
+    /* DRAWER OVERLAY */
+
+    .drawer-overlay {
+        display: block;
+
+        position: fixed;
+        inset: 0;
+
+        background: rgba(15, 20, 35, 0.4);
+
+        z-index: 101;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    .drawer-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    /* PREVENT BACKGROUND SCROLL */
+
+    body.drawer-active {
+        overflow: hidden;
+    }
+
+
+    /* MAIN CONTENT */
 
     .dashboard-main {
         padding: 27px 17px;
     }
+
+
+    /* WELCOME SECTION */
 
     .welcome-section {
         align-items: flex-start;
         flex-direction: column;
     }
 
+
+    /* STATISTICS */
+
     .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 
@@ -657,6 +983,9 @@ tbody tr:hover {
         font-size: 24px;
     }
 
+
+    /* SECTION HEADINGS */
+
     .section-heading {
         align-items: flex-start;
     }
@@ -665,17 +994,23 @@ tbody tr:hover {
         font-size: 20px;
     }
 
+
+    /* EVENT AND CERTIFICATE CARDS */
+
     .events-grid,
     .certificates-grid {
         grid-template-columns: 1fr;
     }
+
 }
+
 
 /* ========================================
    SMALL MOBILE
 ======================================== */
 
 @media (max-width: 380px) {
+
     .dashboard-header {
         padding: 0 12px;
     }
@@ -687,6 +1022,7 @@ tbody tr:hover {
     .brand-icon {
         width: 37px;
         height: 37px;
+
         font-size: 21px;
     }
 
@@ -694,9 +1030,11 @@ tbody tr:hover {
         font-size: 16px;
     }
 
-    .logout-btn {
-        padding: 8px 11px;
-        font-size: 12px;
+    .drawer-toggle {
+        width: 38px;
+        height: 38px;
+
+        font-size: 21px;
     }
 
     .dashboard-main {
@@ -721,5 +1059,109 @@ tbody tr:hover {
 
     .secondary-btn {
         padding: 10px 12px;
+    }
+
+}
+
+
+/* =====================================================
+   STUDENT REGISTRATIONS - SINGLE BOX ON MOBILE
+   ===================================================== */
+
+@media (max-width: 650px) {
+
+    #registrations .table-wrapper {
+        width: 100%;
+        overflow: hidden;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    #registrations table {
+        width: 100%;
+        min-width: 0;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: transparent;
+    }
+
+    #registrations thead {
+        display: none;
+    }
+
+    #registrations tbody {
+        display: block;
+        width: 100%;
+    }
+
+    /* One box per registration */
+    #registrations tbody tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 14px 16px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(41, 30, 75, 0.04);
+    }
+
+    /* All details inside the same box */
+    #registrations tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+
+        width: 100%;
+        padding: 7px 0;
+
+        border: none;
+        font-size: 12px;
+        line-height: 1.5;
+        text-align: right;
+
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    #registrations tbody td::before {
+        flex: 0 0 40%;
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    #registrations tbody td:nth-child(1)::before {
+        content: "Event";
+    }
+
+    #registrations tbody td:nth-child(2)::before {
+        content: "Category";
+    }
+
+    #registrations tbody td:nth-child(3)::before {
+        content: "Registration Date";
+    }
+
+    #registrations tbody td:nth-child(4)::before {
+        content: "Approval";
+    }
+
+    #registrations tbody td:nth-child(5)::before {
+        content: "Attendance";
+    }
+
+    /* Loading and empty messages */
+    #registrations tbody td[colspan] {
+        display: block;
+        text-align: center;
+        padding: 12px;
+    }
+
+    #registrations tbody td[colspan]::before {
+        content: none;
     }
 }

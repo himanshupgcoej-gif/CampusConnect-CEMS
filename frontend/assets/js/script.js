@@ -1,54 +1,64 @@
 
+/* =========================================
+   1. MOBILE NAVIGATION DRAWER
+========================================= */
 
-/* =========================
-   1. OPEN NAVIGATION MENU
-========================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-function openMenu() {
-    if (!mobileMenu || !menuOverlay || !menuToggle) return;
+    // DOM elements
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuOverlay = document.getElementById("menuOverlay");
+    const menuClose = document.getElementById("menuClose");
 
-    mobileMenu.classList.add("open");
-    menuOverlay.classList.add("visible");
-    menuToggle.classList.add("active");
+    // Check required elements
+    if (!menuToggle || !mobileMenu || !menuOverlay) {
+        console.error("Navigation drawer elements not found.");
+        return;
+    }
 
-    menuToggle.setAttribute("aria-expanded", "true");
-    menuToggle.setAttribute("aria-label", "Close navigation menu");
+    // OPEN MENU
+    function openMenu() {
 
-    mobileMenu.setAttribute("aria-hidden", "false");
+        mobileMenu.classList.add("open");
+        menuOverlay.classList.add("visible");
+        menuToggle.classList.add("active");
 
-    document.body.style.overflow = "hidden";
-}
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Close navigation menu");
 
+        mobileMenu.setAttribute("aria-hidden", "false");
 
-/* =========================
-   2. CLOSE NAVIGATION MENU
-========================= */
+        document.body.style.overflow = "hidden";
 
-function closeMenu() {
-    if (!mobileMenu || !menuOverlay || !menuToggle) return;
+        if (menuClose) {
+            menuClose.focus();
+        }
 
-    // Return focus to hamburger button
-    menuToggle.focus();
+    }
 
-    mobileMenu.classList.remove("open");
-    menuOverlay.classList.remove("visible");
-    menuToggle.classList.remove("active");
+    // CLOSE MENU
+    function closeMenu() {
 
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Open navigation menu");
+        if (!mobileMenu.classList.contains("open")) return;
 
-    mobileMenu.setAttribute("aria-hidden", "true");
+        menuToggle.focus();
 
-    document.body.style.overflow = "";
-}
+        mobileMenu.classList.remove("open");
+        menuOverlay.classList.remove("visible");
+        menuToggle.classList.remove("active");
 
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
 
-/* =========================
-   3. HAMBURGER BUTTON
-========================= */
+        mobileMenu.setAttribute("aria-hidden", "true");
 
-if (menuToggle) {
-    menuToggle.addEventListener("click", function () {
+        document.body.style.overflow = "";
+
+    }
+
+    // HAMBURGER BUTTON
+    menuToggle.addEventListener("click", () => {
 
         if (mobileMenu.classList.contains("open")) {
             closeMenu();
@@ -57,67 +67,46 @@ if (menuToggle) {
         }
 
     });
-}
 
-
-/* =========================
-   4. CLOSE BUTTON
-========================= */
-
-if (menuClose) {
-    menuClose.addEventListener("click", closeMenu);
-}
-
-
-/* =========================
-   5. CLICK OUTSIDE MENU
-========================= */
-
-if (menuOverlay) {
-    menuOverlay.addEventListener("click", closeMenu);
-}
-
-
-
-/* =========================
-   6. CLICK OUTSIDE MENU
-========================= */
-
-if (menuOverlay) {
-    menuOverlay.addEventListener("click", closeMenu);
-}
-
-
-/* =========================
-   7. CLOSE USING ESCAPE
-========================= */
-
-document.addEventListener("keydown", function (event) {
-
-    if (event.key === "Escape") {
-        closeMenu();
+    // CLOSE BUTTON
+    if (menuClose) {
+        menuClose.addEventListener("click", closeMenu);
     }
+
+    // CLICK OUTSIDE MENU
+    menuOverlay.addEventListener("click", closeMenu);
+
+    // CLOSE USING ESCAPE
+    document.addEventListener("keydown", (event) => {
+
+        if (
+            event.key === "Escape" &&
+            mobileMenu.classList.contains("open")
+        ) {
+            closeMenu();
+        }
+
+    });
+
+    // CLOSE AFTER CLICKING LINKS OR MENU ACTIONS
+    // Event delegation also handles dynamically created account links.
+    mobileMenu.addEventListener("click", (event) => {
+
+        const clickedElement = event.target.closest(
+            ".menu-links a, .account-links a, .menu-cta"
+        );
+
+        if (clickedElement) {
+            closeMenu();
+        }
+
+    });
 
 });
 
 
-/* =========================
-   8. CLOSE AFTER NAVIGATION
-========================= */
-
-if (mobileMenu) {
-    mobileMenu
-        .querySelectorAll(".menu-links a, .account-links a, .menu-cta")
-        .forEach(function (link) {
-
-            link.addEventListener("click", closeMenu);
-
-        });
-}
-
-
 /* =========================================
-   9. UPCOMING EVENTS FUNCTIONALITY
+   2. UPCOMING EVENTS FUNCTIONALITY
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -130,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventCards = section.querySelectorAll(".event-card");
     const noEventsMessage = section.querySelector(".no-events");
 
-    // Category filtering
+    // CATEGORY FILTERING
     filterButtons.forEach((button) => {
 
         button.addEventListener("click", () => {
@@ -160,7 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 card.hidden = !matchesCategory;
 
-                if (matchesCategory) visibleCount++;
+                if (matchesCategory) {
+                    visibleCount++;
+                }
 
             });
 
@@ -173,14 +164,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // Expand or collapse event details
+    // EXPAND OR COLLAPSE EVENT DETAILS
     section.querySelectorAll(".details-btn").forEach((button) => {
 
         button.addEventListener("click", () => {
 
             const card = button.closest(".event-card");
+
+            if (!card) return;
+
             const details = card.querySelector(".event-extra");
             const label = button.querySelector(".details-label");
+
+            if (!details || !label) return;
 
             const isExpanded =
                 button.getAttribute("aria-expanded") === "true";
@@ -204,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   10. EVENT CATEGORIES SECTION
+   3. EVENT CATEGORIES SECTION
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -229,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   11. LIVE STUDENT TESTIMONIALS
+   4. LIVE STUDENT TESTIMONIALS
    Fetch approved feedback from Flask API
 ========================================= */
 
@@ -270,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 0;
 
 
-    // Generate initials from student name.
+    // GENERATE INITIALS FROM STUDENT NAME
     function getInitials(studentName) {
 
         return String(studentName || "Student")
@@ -283,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Show a testimonial.
+    // SHOW A TESTIMONIAL
     function showTestimonial(index) {
 
         if (testimonials.length === 0) return;
@@ -315,8 +311,10 @@ document.addEventListener("DOMContentLoaded", () => {
         counter.textContent =
             `${currentIndex + 1} / ${testimonials.length}`;
 
-        // Update navigation dots.
-        const dots = dotsContainer.querySelectorAll(".testimonial-dot");
+        // UPDATE NAVIGATION DOTS
+        const dots = dotsContainer.querySelectorAll(
+            ".testimonial-dot"
+        );
 
         dots.forEach((dot, dotIndex) => {
 
@@ -332,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        // Replay card entrance animation.
+        // REPLAY CARD ENTRANCE ANIMATION
         card.style.animation = "none";
 
         void card.offsetWidth;
@@ -342,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Create navigation dots.
+    // CREATE NAVIGATION DOTS
     function createTestimonialDots() {
 
         dotsContainer.replaceChildren();
@@ -370,14 +368,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Show message when no approved testimonials exist.
+    // SHOW MESSAGE WHEN NO APPROVED TESTIMONIALS EXIST
     function showEmptyTestimonials() {
 
         avatar.textContent = "CC";
+
         name.textContent = "Be the First to Share";
+
         course.textContent = "Your experience matters";
 
         stars.textContent = "☆☆☆☆☆";
+
         stars.setAttribute("aria-label", "No ratings yet");
 
         feedback.textContent =
@@ -390,15 +391,20 @@ document.addEventListener("DOMContentLoaded", () => {
         dotsContainer.replaceChildren();
 
         previousButton.disabled = true;
+
         nextButton.disabled = true;
 
     }
 
 
-    // Fetch approved testimonials from backend.
+    // FETCH APPROVED TESTIMONIALS FROM BACKEND
     async function loadTestimonials() {
 
         try {
+
+            if (!API_BASE) {
+                throw new Error("API base URL is not configured.");
+            }
 
             const response = await fetch(
                 `${API_BASE}/feedback/approved`
@@ -410,11 +416,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const result = await response.json();
 
-            if (!result.success || !Array.isArray(result.testimonials)) {
+            if (
+                !result.success ||
+                !Array.isArray(result.testimonials)
+            ) {
                 throw new Error("Invalid testimonials response.");
             }
 
-            // Use only valid approved testimonial data.
+            // USE ONLY VALID APPROVED TESTIMONIAL DATA
             testimonials = result.testimonials.filter(student => {
 
                 return (
@@ -436,6 +445,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             previousButton.disabled = false;
+
             nextButton.disabled = false;
 
             createTestimonialDots();
@@ -447,11 +457,17 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Testimonial loading error:", error);
 
             avatar.textContent = "CC";
+
             name.textContent = "Student Experiences";
+
             course.textContent = "CampusConnect";
 
             stars.textContent = "☆☆☆☆☆";
-            stars.setAttribute("aria-label", "Testimonials unavailable");
+
+            stars.setAttribute(
+                "aria-label",
+                "Testimonials unavailable"
+            );
 
             feedback.textContent =
                 "Student experiences are temporarily unavailable. Please try again later.";
@@ -463,6 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
             dotsContainer.replaceChildren();
 
             previousButton.disabled = true;
+
             nextButton.disabled = true;
 
         }
@@ -470,7 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Previous testimonial.
+    // PREVIOUS TESTIMONIAL
     previousButton.addEventListener("click", () => {
 
         showTestimonial(currentIndex - 1);
@@ -478,7 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // Next testimonial.
+    // NEXT TESTIMONIAL
     nextButton.addEventListener("click", () => {
 
         showTestimonial(currentIndex + 1);
@@ -486,19 +503,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // Load testimonials when homepage opens.
+    // LOAD TESTIMONIALS WHEN HOMEPAGE OPENS
     loadTestimonials();
 
 });
 
 
 /* =========================================
-   12. WEBSITE FOOTER JAVASCRIPT
+   5. WEBSITE FOOTER JAVASCRIPT
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Automatically update copyright year.
+    // AUTOMATICALLY UPDATE COPYRIGHT YEAR
     const footerYear = document.getElementById("footer-year");
 
     if (footerYear) {
@@ -506,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Back-to-top button.
+    // BACK-TO-TOP BUTTON
     const backToTopButton = document.getElementById("back-to-top");
 
     if (backToTopButton) {
@@ -530,7 +547,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   13. STUDENT ACCOUNT / LOGIN STATUS
+   6. STUDENT ACCOUNT / LOGIN STATUS
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -539,7 +556,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!mobileMenu) return;
 
-    // Read saved authentication details.
+    // READ SAVED AUTHENTICATION DETAILS
     const token =
         localStorage.getItem("cemsToken") ||
         sessionStorage.getItem("cemsToken");
@@ -562,7 +579,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const accountLinks = mobileMenu.querySelector(".account-links");
 
-    // Use existing account-links section, or create one.
+    // USE EXISTING ACCOUNT-LINKS SECTION, OR CREATE ONE
     const accountSection = accountLinks || document.createElement("div");
 
     if (!accountLinks) {
@@ -573,7 +590,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // Preserve existing Login page URL.
+    // PRESERVE EXISTING LOGIN PAGE URL
     const existingLoginLink = accountSection.querySelector("a");
 
     const loginURL = existingLoginLink
@@ -584,7 +601,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (token && user) {
 
-        // Student's name.
+        // STUDENT'S NAME
         const welcome = document.createElement("p");
 
         welcome.className = "account-welcome";
@@ -595,13 +612,15 @@ document.addEventListener("DOMContentLoaded", () => {
         accountSection.appendChild(welcome);
 
 
-        // My Certificates link (students only).
+        // MY CERTIFICATES LINK (STUDENTS ONLY)
         if ((user.role || "").toLowerCase() === "student") {
 
             const certificatesLink = document.createElement("a");
 
             certificatesLink.href = "my-certificates.html";
+
             certificatesLink.textContent = "My Certificates";
+
             certificatesLink.className = "menu-cta";
 
             accountSection.appendChild(certificatesLink);
@@ -609,11 +628,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        // Logout button.
+        // LOGOUT BUTTON
         const logoutButton = document.createElement("button");
 
         logoutButton.type = "button";
+
         logoutButton.className = "menu-cta";
+
         logoutButton.textContent = "Logout";
 
         logoutButton.addEventListener("click", () => {
@@ -632,11 +653,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
 
-        // Login link for visitors.
+        // LOGIN LINK FOR VISITORS
         const loginLink = document.createElement("a");
 
         loginLink.href = loginURL;
+
         loginLink.textContent = "Login";
+
         loginLink.className = "menu-cta";
 
         accountSection.appendChild(loginLink);

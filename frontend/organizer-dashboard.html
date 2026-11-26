@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,127 +9,82 @@
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- Organizer Dashboard CSS -->
     <link rel="stylesheet" href="assets/css/organizer-dashboard.css">
 
-    <!-- Organizer Dashboard JavaScript -->
     <script src="assets/js/config.js" defer></script>
     <script src="assets/js/organizer-dashboard.js" defer></script>
 </head>
 
 <body>
 
-    <!-- ======================================
-         HEADER
-    ======================================= -->
-
+    <!-- HEADER -->
     <header class="dashboard-header">
 
         <a href="index.html" class="brand">
-
             <div class="brand-icon">C</div>
-
             <div>
                 <h2>CampusConnect</h2>
                 <p>Organizer Portal</p>
             </div>
-
         </a>
 
         <div class="header-right">
-
             <span id="header-user-name">Organizer</span>
 
-            <button id="logout-btn" class="logout-btn">
+            <button id="logout-btn" class="logout-btn" type="button">
                 Logout
             </button>
 
+            <button
+                id="menu-toggle"
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="organizer-sidebar">
+                ☰
+            </button>
         </div>
 
     </header>
 
+    <div class="drawer-overlay" id="drawer-overlay"></div>
 
-    <!-- ======================================
-         DASHBOARD LAYOUT
-    ======================================= -->
-
+    <!-- DASHBOARD LAYOUT -->
     <div class="dashboard-layout">
 
-
-        <!-- ==================================
-             SIDEBAR
-        =================================== -->
-
-        <aside class="sidebar">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="organizer-sidebar">
 
             <div class="sidebar-user">
-
-                <div class="user-avatar" id="user-avatar">
-                    O
-                </div>
-
+                <div class="user-avatar" id="user-avatar">O</div>
                 <h3 id="sidebar-user-name">Organizer</h3>
-
                 <p>Event Organizer</p>
-
             </div>
 
-
             <nav class="sidebar-nav">
-
-                <a href="#overview" class="nav-link active">
-                    ⌂ Dashboard
-                </a>
-
-                <a href="#create-event" class="nav-link">
-                    ＋ Create Event
-                </a>
-
-                <a href="#my-events" class="nav-link">
-                    ▦ My Events
-                </a>
-
-                <a href="#registrations" class="nav-link">
-                    ▤ Registrations
-                </a>
-
-                <a href="#attendance" class="nav-link">
-                    ✓ Attendance
-                </a>
-
-                <a href="#certificates" class="nav-link">
-                    ♧ Certificates
-                </a>
-
-                <a href="index.html" class="nav-link">
-                    ← Home Page
-                </a>
-
+                <a href="#overview" class="nav-link active">⌂ Dashboard</a>
+                <a href="#create-event" class="nav-link">＋ Create Event</a>
+                <a href="#my-events" class="nav-link">▦ My Events</a>
+                <a href="#registrations" class="nav-link">▤ Registrations</a>
+                <a href="#attendance" class="nav-link">✓ Attendance</a>
+                <a href="#certificates" class="nav-link">♧ Certificates</a>
+                <a href="index.html" class="nav-link">← Home Page</a>
             </nav>
 
-
-            <button id="sidebar-logout-btn" class="sidebar-logout">
+            <button id="sidebar-logout-btn" class="sidebar-logout" type="button">
                 Logout
             </button>
 
         </aside>
 
-
-        <!-- ==================================
-             MAIN CONTENT
-        =================================== -->
-
+        <!-- MAIN CONTENT -->
         <main class="dashboard-main">
 
-
-            <!-- ==================================
-                 OVERVIEW
-            =================================== -->
-
+            <!-- OVERVIEW -->
             <section id="overview" class="welcome-section">
 
                 <div>
-
                     <p class="eyebrow">ORGANIZER DASHBOARD</p>
 
                     <h1>
@@ -142,7 +96,6 @@
                         Manage your college events, registrations,
                         attendance and certificates.
                     </p>
-
                 </div>
 
                 <a href="#create-event" class="primary-btn">
@@ -151,82 +104,45 @@
 
             </section>
 
-
-            <!-- ==================================
-                 STATISTICS
-            =================================== -->
-
+            <!-- STATISTICS -->
             <section class="stats-grid">
 
                 <article class="stat-card">
-
                     <span class="stat-icon">▦</span>
-
                     <p>Total Events</p>
-
                     <h2 id="total-events">0</h2>
-
                 </article>
 
-
                 <article class="stat-card">
-
                     <span class="stat-icon">◷</span>
-
                     <p>Draft Events</p>
-
                     <h2 id="draft-events">0</h2>
-
                 </article>
 
-
                 <article class="stat-card">
-
                     <span class="stat-icon">▤</span>
-
                     <p>Total Registrations</p>
-
                     <h2 id="total-registrations">0</h2>
-
                 </article>
 
-
                 <article class="stat-card">
-
                     <span class="stat-icon">♧</span>
-
                     <p>Certificates Issued</p>
-
                     <h2 id="total-certificates">0</h2>
-
                 </article>
 
             </section>
 
-
-
-            <!-- ==================================
-                 CREATE EVENT
-            =================================== -->
-
+            <!-- CREATE EVENT -->
             <section id="create-event" class="dashboard-section">
 
                 <div class="section-heading">
-
                     <div>
-
                         <p class="eyebrow">EVENT MANAGEMENT</p>
-
                         <h2>Create New Event</h2>
-
-                        <p>
-                            Add a new event to your college event portal.
-                        </p>
-
+                        <p>Add a new event to your college event portal.</p>
                     </div>
-
                 </div>
-
 
                 <div class="form-card">
 
@@ -236,198 +152,102 @@
 
                         <div class="form-grid">
 
-
-                            <!-- Event Title -->
-
                             <div class="form-group full-width">
-
-                                <label for="event-title">
-                                    Event Title *
-                                </label>
-
+                                <label for="event-title">Event Title *</label>
                                 <input
                                     type="text"
                                     id="event-title"
                                     name="event_title"
                                     placeholder="Enter event title"
-                                    required
-                                >
-
+                                    required>
                             </div>
 
-
-                            <!-- Description -->
-
                             <div class="form-group full-width">
-
-                                <label for="event-description">
-                                    Event Description *
-                                </label>
-
+                                <label for="event-description">Event Description *</label>
                                 <textarea
                                     id="event-description"
                                     name="description"
                                     rows="4"
                                     placeholder="Describe your event..."
-                                    required
-                                ></textarea>
-
+                                    required></textarea>
                             </div>
 
-
-                            <!-- Venue -->
-
                             <div class="form-group">
-
-                                <label for="event-venue">
-                                    Venue *
-                                </label>
-
+                                <label for="event-venue">Venue *</label>
                                 <input
                                     type="text"
                                     id="event-venue"
                                     name="venue"
                                     placeholder="Enter event venue"
-                                    required
-                                >
-
+                                    required>
                             </div>
 
-
-                            <!-- Category -->
-
                             <div class="form-group">
-
-                                <label for="event-category">
-                                    Event Category *
-                                </label>
-
-                                <select
-                                    id="event-category"
-                                    name="category_id"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Select Category
-                                    </option>
-
+                                <label for="event-category">Event Category *</label>
+                                <select id="event-category" name="category_id" required>
+                                    <option value="">Select Category</option>
                                 </select>
-
                             </div>
 
-
-                            <!-- Start Date -->
-
                             <div class="form-group">
-
-                                <label for="event-start">
-                                    Start Date & Time *
-                                </label>
-
+                                <label for="event-start">Start Date &amp; Time *</label>
                                 <input
                                     type="datetime-local"
                                     id="event-start"
                                     name="start_at"
-                                    required
-                                >
-
+                                    required>
                             </div>
 
-
-                            <!-- End Date -->
-
                             <div class="form-group">
-
-                                <label for="event-end">
-                                    End Date & Time *
-                                </label>
-
+                                <label for="event-end">End Date &amp; Time *</label>
                                 <input
                                     type="datetime-local"
                                     id="event-end"
                                     name="end_at"
-                                    required
-                                >
-
+                                    required>
                             </div>
 
-
-                            <!-- Registration Deadline -->
-
                             <div class="form-group">
-
-                                <label for="event-deadline">
-                                    Registration Deadline
-                                </label>
-
+                                <label for="event-deadline">Registration Deadline</label>
                                 <input
                                     type="datetime-local"
                                     id="event-deadline"
-                                    name="registration_deadline"
-                                >
-
+                                    name="registration_deadline">
                             </div>
 
-
-                            <!-- Capacity -->
-
                             <div class="form-group">
-
-                                <label for="event-capacity">
-                                    Maximum Participants *
-                                </label>
-
+                                <label for="event-capacity">Maximum Participants *</label>
                                 <input
                                     type="number"
                                     id="event-capacity"
                                     name="capacity"
                                     min="1"
                                     placeholder="e.g. 100"
-                                    required
-                                >
-
+                                    required>
                             </div>
 
-
-                            <!-- Image URL -->
-
                             <div class="form-group full-width">
-
-                                <label for="event-image">
-                                    Event Image URL
-                                </label>
-
+                                <label for="event-image">Event Image URL</label>
                                 <input
                                     type="url"
                                     id="event-image"
                                     name="image_url"
-                                    placeholder="https://example.com/image.jpg"
-                                >
-
+                                    placeholder="https://example.com/image.jpg">
                             </div>
-
 
                         </div>
 
-
                         <div class="form-actions">
-
-                            <button
-                                type="reset"
-                                class="secondary-btn"
-                            >
+                            <button type="reset" class="secondary-btn">
                                 Clear Form
                             </button>
 
                             <button
                                 type="submit"
                                 id="create-event-btn"
-                                class="primary-btn"
-                            >
+                                class="primary-btn">
                                 Create Event
                             </button>
-
                         </div>
 
                     </form>
@@ -436,341 +256,177 @@
 
             </section>
 
-
-
-            <!-- ==================================
-                 MY EVENTS
-            =================================== -->
-
+            <!-- MY EVENTS -->
             <section id="my-events" class="dashboard-section">
 
                 <div class="section-heading">
-
                     <div>
-
                         <p class="eyebrow">YOUR EVENTS</p>
-
                         <h2>My Events</h2>
-
-                        <p>
-                            View and manage events created by you.
-                        </p>
-
+                        <p>View and manage events created by you.</p>
                     </div>
 
-                    <button
-                        id="refresh-events"
-                        class="secondary-btn"
-                    >
+                    <button id="refresh-events" class="secondary-btn" type="button">
                         ↻ Refresh
                     </button>
-
                 </div>
-
 
                 <div id="events-message" class="message"></div>
 
-
-                <div id="events-container" class="events-grid">
-
-                    <p class="loading">
-                        Loading your events...
-                    </p>
-
+                <div id="events-container" class="events-list">
+                    <p class="loading">Loading your events...</p>
                 </div>
 
             </section>
 
-
-
-            <!-- ==================================
-                 REGISTRATIONS
-            =================================== -->
-
+            <!-- REGISTRATIONS -->
             <section id="registrations" class="dashboard-section">
 
                 <div class="section-heading">
-
                     <div>
-
                         <p class="eyebrow">PARTICIPANTS</p>
-
                         <h2>Event Registrations</h2>
-
-                        <p>
-                            View and manage students registered for your events.
-                        </p>
-
+                        <p>View and manage students registered for your events.</p>
                     </div>
 
-                    <button
-                        id="refresh-registrations"
-                        class="secondary-btn"
-                    >
+                    <button id="refresh-registrations" class="secondary-btn" type="button">
                         ↻ Refresh
                     </button>
-
                 </div>
-
 
                 <div class="filter-card">
-
-                    <label for="registration-event-filter">
-                        Select Event
-                    </label>
-
+                    <label for="registration-event-filter">Select Event</label>
                     <select id="registration-event-filter">
-
-                        <option value="">
-                            Select an event
-                        </option>
-
+                        <option value="">Select an event</option>
                     </select>
-
                 </div>
-
 
                 <div id="registrations-message" class="message"></div>
 
-
                 <div class="table-wrapper">
-
                     <table>
-
                         <thead>
-
                             <tr>
-
                                 <th>Student Name</th>
-
                                 <th>Email</th>
-
                                 <th>Registration Date</th>
-
                                 <th>Approval Status</th>
-
                                 <th>Actions</th>
-
                             </tr>
-
                         </thead>
 
-
                         <tbody id="registrations-table">
-
                             <tr>
-
                                 <td colspan="5">
                                     Select an event to view registrations.
                                 </td>
-
                             </tr>
-
                         </tbody>
-
                     </table>
-
                 </div>
 
             </section>
 
-
-
-            <!-- ==================================
-                 ATTENDANCE
-            =================================== -->
-
+            <!-- ATTENDANCE -->
             <section id="attendance" class="dashboard-section">
 
                 <div class="section-heading">
-
                     <div>
-
                         <p class="eyebrow">EVENT PARTICIPATION</p>
-
                         <h2>Attendance Management</h2>
-
-                        <p>
-                            Mark attendance for approved participants.
-                        </p>
-
+                        <p>Mark attendance for approved participants.</p>
                     </div>
 
-                    <button
-                        id="refresh-attendance"
-                        class="secondary-btn"
-                    >
+                    <button id="refresh-attendance" class="secondary-btn" type="button">
                         ↻ Refresh
                     </button>
-
                 </div>
-
 
                 <div class="filter-card">
-
-                    <label for="attendance-event-filter">
-                        Select Event
-                    </label>
-
+                    <label for="attendance-event-filter">Select Event</label>
                     <select id="attendance-event-filter">
-
-                        <option value="">
-                            Select an event
-                        </option>
-
+                        <option value="">Select an event</option>
                     </select>
-
                 </div>
-
 
                 <div id="attendance-message" class="message"></div>
 
-
                 <div class="table-wrapper">
-
                     <table>
-
                         <thead>
-
                             <tr>
-
                                 <th>Student Name</th>
-
                                 <th>Email</th>
-
                                 <th>Approval Status</th>
-
                                 <th>Attendance Status</th>
-
                                 <th>Action</th>
-
                             </tr>
-
                         </thead>
 
-
                         <tbody id="attendance-table">
-
                             <tr>
-
                                 <td colspan="5">
                                     Select an event to manage attendance.
                                 </td>
-
                             </tr>
-
                         </tbody>
-
                     </table>
-
                 </div>
 
             </section>
 
-
-
-            <!-- ==================================
-                 CERTIFICATES
-            =================================== -->
-
+            <!-- CERTIFICATES -->
             <section id="certificates" class="dashboard-section">
 
                 <div class="section-heading">
-
                     <div>
-
                         <p class="eyebrow">ACHIEVEMENTS</p>
-
                         <h2>Certificate Management</h2>
-
-                        <p>
-                            Issue certificates to eligible participants.
-                        </p>
-
+                        <p>Issue certificates to eligible participants.</p>
                     </div>
-
                 </div>
-
 
                 <div class="filter-card">
-
-                    <label for="certificate-event-filter">
-                        Select Event
-                    </label>
-
+                    <label for="certificate-event-filter">Select Event</label>
                     <select id="certificate-event-filter">
-
-                        <option value="">
-                            Select an event
-                        </option>
-
+                        <option value="">Select an event</option>
                     </select>
-
                 </div>
-
 
                 <div id="certificates-message" class="message"></div>
 
-
                 <div class="table-wrapper">
-
                     <table>
-
                         <thead>
-
                             <tr>
-
                                 <th>Student Name</th>
-
                                 <th>Email</th>
-
                                 <th>Attendance</th>
-
                                 <th>Certificate Status</th>
-
                                 <th>Action</th>
-
                             </tr>
-
                         </thead>
 
-
                         <tbody id="certificates-table">
-
                             <tr>
-
                                 <td colspan="5">
                                     Select an event to manage certificates.
                                 </td>
-
                             </tr>
-
                         </tbody>
-
                     </table>
-
                 </div>
 
             </section>
 
-
-
-            <!-- ==================================
-                 FOOTER
-            =================================== -->
-
+            <!-- FOOTER -->
             <footer class="dashboard-footer">
-
-                © <span id="footer-year"></span>
-                CampusConnect · GCOEJ
-
+                © <span id="footer-year"></span> CampusConnect · GCOEJ
             </footer>
-
 
         </main>
 
     </div>
 
 </body>
-
 </html>

@@ -1,4 +1,3 @@
-
 // =====================================================
 // CAMPUSCONNECT - ORGANIZER DASHBOARD
 // =====================================================
@@ -69,6 +68,10 @@ function showTableMessage(id, message, colspan = 5) {
         </tr>
     `;
 }
+
+// =====================================================
+// AUTHENTICATION DATA
+// =====================================================
 
 function getAuthData() {
     const token =
@@ -278,7 +281,9 @@ async function loadMyEvents() {
     const container = element("events-container");
 
     if (container) {
-        container.innerHTML = `<p class="loading">Loading your events...</p>`;
+        container.innerHTML = `
+            <p class="loading">Loading your events...</p>
+        `;
     }
 
     try {
@@ -302,6 +307,12 @@ async function loadMyEvents() {
     }
 }
 
+// =====================================================
+// RENDER MY EVENTS
+// Desktop: Existing event cards
+// Mobile: Single expandable list
+// =====================================================
+
 function renderMyEvents() {
     const container = element("events-container");
     if (!container) return;
@@ -320,79 +331,122 @@ function renderMyEvents() {
         return `
             <article class="event-card">
 
-                ${
-                    event.image_url
-                        ? `<img
-                            src="${escapeHTML(event.image_url)}"
-                            alt="${escapeHTML(event.event_title)}"
-                            class="event-image"
-                            onerror="this.style.display='none'"
-                        >`
-                        : ""
-                }
+                <!-- Mobile accordion heading -->
+                <button
+                    type="button"
+                    class="event-card-header"
+                    data-event-toggle
+                    aria-expanded="false"
+                >
 
-                <div class="event-card-content">
-
-                    <span class="event-status">
-                        ${escapeHTML(status)}
+                    <span class="event-card-title">
+                        ${escapeHTML(event.event_title)}
                     </span>
 
-                    <h3>${escapeHTML(event.event_title)}</h3>
+                    <span class="event-card-dates">
+                        <span>
+                            Start: ${escapeHTML(formatDate(event.start_at))}
+                        </span>
 
-                    <p>${escapeHTML(event.description || "")}</p>
+                        <span>
+                            End: ${escapeHTML(formatDate(event.end_at))}
+                        </span>
+                    </span>
 
-                    <p>
-                        <strong>Category:</strong>
-                        ${escapeHTML(event.category_name || "N/A")}
-                    </p>
+                    <span class="event-card-chevron" aria-hidden="true">
+                        ⌄
+                    </span>
 
-                    <p>
-                        <strong>Venue:</strong>
-                        ${escapeHTML(event.venue || "N/A")}
-                    </p>
+                </button>
 
-                    <p>
-                        <strong>Start:</strong>
-                        ${escapeHTML(formatDate(event.start_at))}
-                    </p>
+                <!-- Expandable event details -->
+                <div class="event-card-details">
 
-                    <p>
-                        <strong>Capacity:</strong>
-                        ${escapeHTML(event.capacity)}
-                    </p>
+                    ${
+                        event.image_url
+                            ? `<img
+                                src="${escapeHTML(event.image_url)}"
+                                alt="${escapeHTML(event.event_title)}"
+                                class="event-image"
+                                onerror="this.style.display='none'"
+                            >`
+                            : ""
+                    }
 
-                    <div class="event-card-actions">
+                    <div class="event-card-content">
 
-                        ${
-                            isDraft
-                                ? `<button
-                                    type="button"
-                                    class="primary-btn"
-                                    data-action="publish"
-                                    data-event-id="${Number(event.event_id)}"
-                                >
-                                    Publish Event
-                                </button>`
-                                : ""
-                        }
+                        <span class="event-status">
+                            ${escapeHTML(status)}
+                        </span>
 
-                        <button
-                            type="button"
-                            class="secondary-btn"
-                            data-action="registrations"
-                            data-event-id="${Number(event.event_id)}"
-                        >
-                            View Registrations
-                        </button>
+                        <h3>${escapeHTML(event.event_title)}</h3>
+
+                        <p>
+                            ${escapeHTML(event.description || "")}
+                        </p>
+
+                        <p>
+                            <strong>Category:</strong>
+                            ${escapeHTML(event.category_name || "N/A")}
+                        </p>
+
+                        <p>
+                            <strong>Venue:</strong>
+                            ${escapeHTML(event.venue || "N/A")}
+                        </p>
+
+                        <p>
+                            <strong>Start:</strong>
+                            ${escapeHTML(formatDate(event.start_at))}
+                        </p>
+
+                        <p>
+                            <strong>End:</strong>
+                            ${escapeHTML(formatDate(event.end_at))}
+                        </p>
+
+                        <p>
+                            <strong>Capacity:</strong>
+                            ${escapeHTML(event.capacity)}
+                        </p>
+
+                        <div class="event-card-actions">
+
+                            ${
+                                isDraft
+                                    ? `<button
+                                        type="button"
+                                        class="primary-btn"
+                                        data-action="publish"
+                                        data-event-id="${Number(event.event_id)}"
+                                    >
+                                        Publish Event
+                                    </button>`
+                                    : ""
+                            }
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                data-action="registrations"
+                                data-event-id="${Number(event.event_id)}"
+                            >
+                                View Registrations
+                            </button>
+
+                        </div>
 
                     </div>
-
                 </div>
 
             </article>
         `;
     }).join("");
 }
+
+// =====================================================
+// POPULATE EVENT FILTERS
+// =====================================================
 
 function populateEventFilters() {
     const filterIds = [
@@ -809,7 +863,9 @@ function renderAttendance() {
 
                 <td>Approved</td>
 
-                <td>${escapeHTML(attendance)}</td>
+                <td>
+                    ${escapeHTML(attendance)}
+                </td>
 
                 <td>
                     <button
@@ -948,6 +1004,7 @@ function renderCertificates() {
                     Issue Certificate
                 </button>
             `;
+
         } else if (
             issued &&
             certificateStatus === "Active"
@@ -962,10 +1019,13 @@ function renderCertificates() {
                     Download
                 </button>
             `;
+
         } else if (issued) {
             action = escapeHTML(certificateStatus);
+
         } else if (record.attendance_status !== "Present") {
             action = "Attendance required";
+
         } else {
             action = "Approval required";
         }
@@ -973,13 +1033,21 @@ function renderCertificates() {
         return `
             <tr>
 
-                <td>${escapeHTML(record.student_name)}</td>
+                <td>
+                    ${escapeHTML(record.student_name)}
+                </td>
 
-                <td>${escapeHTML(record.email)}</td>
+                <td>
+                    ${escapeHTML(record.email)}
+                </td>
 
-                <td>${escapeHTML(record.attendance_status || "Not Marked")}</td>
+                <td>
+                    ${escapeHTML(record.attendance_status || "Not Marked")}
+                </td>
 
-                <td>${escapeHTML(certificateStatus)}</td>
+                <td>
+                    ${escapeHTML(certificateStatus)}
+                </td>
 
                 <td>${action}</td>
 
@@ -1090,8 +1158,27 @@ function setupEventListeners() {
         loadMyEvents
     );
 
-    // Event card actions
+    // Event accordion and event actions
     element("events-container")?.addEventListener("click", event => {
+
+        // Expand or collapse an event on mobile
+        const toggle = event.target.closest("[data-event-toggle]");
+
+        if (toggle) {
+            const card = toggle.closest(".event-card");
+            if (!card) return;
+
+            const expanded = card.classList.toggle("expanded");
+
+            toggle.setAttribute(
+                "aria-expanded",
+                String(expanded)
+            );
+
+            return;
+        }
+
+        // Existing event actions
         const button = event.target.closest("button[data-action]");
         if (!button) return;
 
@@ -1102,7 +1189,11 @@ function setupEventListeners() {
         }
 
         if (button.dataset.action === "registrations") {
-            element("registration-event-filter").value = eventId;
+            const filter = element("registration-event-filter");
+
+            if (filter) {
+                filter.value = eventId;
+            }
 
             document.getElementById("registrations")
                 ?.scrollIntoView({ behavior: "smooth" });
@@ -1111,18 +1202,21 @@ function setupEventListeners() {
         }
     });
 
-    // Registrations
+    // Registrations filter
     element("registration-event-filter")?.addEventListener(
         "change",
         loadRegistrations
     );
 
+    // Refresh registrations
     element("refresh-registrations")?.addEventListener(
         "click",
         loadRegistrations
     );
 
+    // Registration actions
     element("registrations-table")?.addEventListener("click", event => {
+
         const button = event.target.closest(
             "button[data-registration-action]"
         );
@@ -1135,18 +1229,21 @@ function setupEventListeners() {
         );
     });
 
-    // Attendance
+    // Attendance filter
     element("attendance-event-filter")?.addEventListener(
         "change",
         loadAttendance
     );
 
+    // Refresh attendance
     element("refresh-attendance")?.addEventListener(
         "click",
         loadAttendance
     );
 
+    // Attendance actions
     element("attendance-table")?.addEventListener("click", event => {
+
         const button = event.target.closest(
             "button[data-attendance-action]"
         );
@@ -1159,13 +1256,15 @@ function setupEventListeners() {
         );
     });
 
-    // Certificates
+    // Certificates filter
     element("certificate-event-filter")?.addEventListener(
         "change",
         loadCertificatesForSelectedEvent
     );
 
+    // Certificate actions
     element("certificates-table")?.addEventListener("click", event => {
+
         const button = event.target.closest(
             "button[data-certificate-action]"
         );
@@ -1187,9 +1286,11 @@ function setupEventListeners() {
         }
     });
 
-    // Sidebar navigation
+    // Sidebar navigation active state
     document.querySelectorAll(".nav-link[href^='#']").forEach(link => {
+
         link.addEventListener("click", () => {
+
             document.querySelectorAll(".nav-link").forEach(item => {
                 item.classList.remove("active");
             });
@@ -1219,3 +1320,67 @@ async function initializeDashboard() {
 
 // Start dashboard
 document.addEventListener("DOMContentLoaded", initializeDashboard);
+
+// =====================================================
+// MOBILE NAVIGATION DRAWER
+// =====================================================
+
+const menuToggle = document.getElementById("menu-toggle");
+const organizerSidebar = document.getElementById("organizer-sidebar");
+const drawerOverlay = document.getElementById("drawer-overlay");
+
+function openOrganizerDrawer() {
+    organizerSidebar.classList.add("active");
+    drawerOverlay.classList.add("active");
+    document.body.classList.add("drawer-active");
+
+    menuToggle.textContent = "✕";
+
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Close navigation menu");
+}
+
+function closeOrganizerDrawer() {
+    organizerSidebar.classList.remove("active");
+    drawerOverlay.classList.remove("active");
+    document.body.classList.remove("drawer-active");
+
+    menuToggle.textContent = "☰";
+
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
+}
+
+if (menuToggle && organizerSidebar && drawerOverlay) {
+
+    menuToggle.addEventListener("click", () => {
+
+        if (organizerSidebar.classList.contains("active")) {
+            closeOrganizerDrawer();
+        } else {
+            openOrganizerDrawer();
+        }
+    });
+
+    // Close when overlay is clicked
+    drawerOverlay.addEventListener("click", closeOrganizerDrawer);
+
+    // Close after clicking a navigation link
+    organizerSidebar.querySelectorAll(".sidebar-nav a").forEach(link => {
+        link.addEventListener("click", closeOrganizerDrawer);
+    });
+
+    // Close using Escape key
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closeOrganizerDrawer();
+        }
+    });
+
+    // Close when switching back to desktop
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 650) {
+            closeOrganizerDrawer();
+        }
+    });
+}
