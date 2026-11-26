@@ -1,16 +1,7 @@
 
-/* =========================
-   1. GET HTML ELEMENTS
-========================= */
-
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-const menuClose = document.getElementById("menuClose");
-
 
 /* =========================
-   2. OPEN NAVIGATION MENU
+   1. OPEN NAVIGATION MENU
 ========================= */
 
 function openMenu() {
@@ -30,11 +21,14 @@ function openMenu() {
 
 
 /* =========================
-   3. CLOSE NAVIGATION MENU
+   2. CLOSE NAVIGATION MENU
 ========================= */
 
 function closeMenu() {
     if (!mobileMenu || !menuOverlay || !menuToggle) return;
+
+    // Return focus to hamburger button
+    menuToggle.focus();
 
     mobileMenu.classList.remove("open");
     menuOverlay.classList.remove("visible");
@@ -50,13 +44,13 @@ function closeMenu() {
 
 
 /* =========================
-   4. HAMBURGER BUTTON
+   3. HAMBURGER BUTTON
 ========================= */
 
 if (menuToggle) {
     menuToggle.addEventListener("click", function () {
 
-        if (mobileMenu && mobileMenu.classList.contains("open")) {
+        if (mobileMenu.classList.contains("open")) {
             closeMenu();
         } else {
             openMenu();
@@ -67,12 +61,22 @@ if (menuToggle) {
 
 
 /* =========================
-   5. CLOSE BUTTON
+   4. CLOSE BUTTON
 ========================= */
 
 if (menuClose) {
     menuClose.addEventListener("click", closeMenu);
 }
+
+
+/* =========================
+   5. CLICK OUTSIDE MENU
+========================= */
+
+if (menuOverlay) {
+    menuOverlay.addEventListener("click", closeMenu);
+}
+
 
 
 /* =========================

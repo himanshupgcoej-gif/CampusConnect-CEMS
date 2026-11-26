@@ -543,3 +543,299 @@ input:focus-visible {
         animation-iteration-count: 1 !important;
     }
 }
+
+
+
+/* =========================================
+   CAMPUSCONNECT LOGIN PAGE
+   LIGHT THEME - MATCHES CEMS HOMEPAGE
+========================================= */
+
+:root {
+    --bg: #f7f6fc;
+    --surface: #ffffff;
+    --surface-light: #f4f1fc;
+    --border: #e5e0f0;
+    --text: #18233d;
+    --muted: #718096;
+    --accent: #7652d6;
+    --accent-light: #8060d9;
+    --blue: #398bd8;
+    --danger: #dc455b;
+    --success: #168653;
+}
+
+/* GLOBAL */
+
+body {
+    background:
+        radial-gradient(ellipse at 10% 15%, rgba(139, 92, 246, .07), transparent 40%),
+        radial-gradient(ellipse at 90% 85%, rgba(56, 189, 248, .07), transparent 40%),
+        var(--bg);
+    color: var(--text);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline-color: var(--accent);
+}
+
+/* BACKGROUND EFFECTS */
+
+.background-glow {
+    opacity: .07;
+}
+
+.glow-one {
+    background: #9b7bea;
+}
+
+.glow-two {
+    background: #69b9e8;
+}
+
+/* HEADER */
+
+.login-header {
+    background: rgba(255, 255, 255, .94);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 3px 15px rgba(42, 30, 75, .035);
+}
+
+.brand-logo {
+    color: var(--text);
+}
+
+.brand-highlight {
+    color: var(--accent);
+}
+
+.back-home {
+    color: var(--muted);
+}
+
+.back-home:hover {
+    color: var(--accent);
+}
+
+/* MAIN CARD */
+
+.auth-card {
+    background: rgba(255, 255, 255, .97);
+    border: 1px solid var(--border);
+    box-shadow: 0 18px 55px rgba(42, 30, 75, .08);
+}
+
+/* HEADING */
+
+.welcome-icon {
+    color: var(--accent);
+    background: #f1edff;
+    border-color: #ded5f5;
+}
+
+.eyebrow {
+    color: var(--accent);
+}
+
+.auth-heading h1 {
+    color: var(--text);
+}
+
+.auth-heading h1 span {
+    color: var(--accent);
+}
+
+.auth-subtitle {
+    color: var(--muted);
+}
+
+/* LOGIN / REGISTER TABS */
+
+.auth-tabs {
+    background: #f4f1fc;
+    border-color: var(--border);
+}
+
+.auth-tab {
+    color: var(--muted);
+}
+
+.auth-tab:hover {
+    color: var(--accent);
+}
+
+.auth-tab.active {
+    color: #ffffff;
+    background: linear-gradient(100deg, #7652d6, #8b6be8);
+    box-shadow: 0 4px 14px rgba(118, 82, 214, .18);
+}
+
+/* FORM LABELS */
+
+.form-group > label,
+.label-row > label {
+    color: var(--text);
+}
+
+/* INPUTS AND SELECTS */
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 12px 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #faf9fd;
+    color: var(--text);
+    font-size: 14px;
+    color-scheme: light;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-group input::placeholder {
+    color: #9aa5b5;
+}
+
+.form-group select option {
+    color: var(--text);
+    background: #ffffff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(118, 82, 214, .12);
+}
+
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"] {
+    border-color: var(--danger);
+}
+
+/* PASSWORD */
+
+.text-button,
+.inline-switch,
+.password-toggle {
+    color: var(--accent);
+}
+
+.text-button:hover,
+.inline-switch:hover,
+.password-toggle:hover {
+    color: var(--blue);
+}
+
+/* REMEMBER ME AND TERMS */
+
+.remember-option {
+    color: #64748b;
+}
+
+.remember-option input {
+    accent-color: var(--accent);
+}
+
+.terms-option a {
+    color: var(--accent);
+}
+
+.terms-option a:hover {
+    color: var(--blue);
+}
+
+/* PRIMARY BUTTON */
+
+.primary-button {
+    color: #ffffff;
+    background: linear-gradient(110deg, #7652d6, #8b6be8);
+    box-shadow: 0 7px 22px rgba(118, 82, 214, .17);
+}
+
+.primary-button:hover {
+    box-shadow: 0 10px 28px rgba(118, 82, 214, .25);
+}
+
+/* FORM MESSAGES */
+
+.form-message.error {
+    color: #b4233c;
+    background: #fff0f2;
+    border-color: #f4c5ce;
+}
+
+.form-message.success {
+    color: #087747;
+    background: #eaf8f0;
+    border-color: #bce8ce;
+}
+
+.field-error {
+    color: var(--danger);
+}
+
+.field-hint {
+    color: var(--muted);
+}
+
+/* SWITCH PROMPT */
+
+.switch-prompt {
+    color: var(--muted);
+}
+
+.inline-switch {
+    color: var(--accent);
+}
+
+/* BOTTOM NOTE */
+
+.auth-bottom {
+    border-top-color: var(--border);
+    color: var(--muted);
+}
+
+.security-icon {
+    color: var(--accent);
+}
+
+/* FOOTER */
+
+.page-footer {
+    color: #8792a5;
+}
+
+/* RESPONSIVE SAFETY */
+
+@media (max-width: 420px) {
+    .login-header {
+        padding: 15px 14px;
+    }
+
+    .brand-logo {
+        font-size: 15px;
+    }
+
+    .brand-icon {
+        width: 33px;
+        height: 33px;
+    }
+
+    .back-home {
+        font-size: 11px;
+    }
+
+    .auth-main {
+        padding: 25px 12px 20px;
+    }
+
+    .auth-card {
+        padding: 25px 17px;
+        border-radius: 18px;
+    }
+}

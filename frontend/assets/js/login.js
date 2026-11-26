@@ -705,8 +705,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // INITIAL PAGE STATE
     // ==========================================
 
+    // Open Registration form by default.
     updateAccountTypeFields();
 
-    showLoginForm();
+    showRegisterForm();
 
 });

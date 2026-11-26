@@ -1,6 +1,6 @@
 
 /* =====================================================
-   FEEDBACK PAGE
+   FEEDBACK PAGE — LIGHT THEME
 ===================================================== */
 
 .feedback-page {
@@ -9,35 +9,45 @@
     align-items: center;
     justify-content: center;
     padding: 60px 20px;
+
     background:
-        radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.12), transparent 35%),
-        radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.10), transparent 35%),
-        #080b12;
+        radial-gradient(circle at 15% 20%, rgba(118, 82, 214, 0.09), transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(57, 139, 216, 0.08), transparent 35%),
+        #f7f6fc;
 }
 
 .feedback-container {
     width: 100%;
     max-width: 650px;
     padding: 38px;
-    border: 1px solid rgba(196, 181, 253, 0.22);
+
+    border: 1px solid #e5e0f0;
     border-radius: 22px;
-    background: rgba(16, 22, 34, 0.88);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+    background: #ffffff;
+
+    box-shadow: 0 16px 45px rgba(43, 32, 75, 0.09);
 }
+
+/* Back Link */
 
 .feedback-back {
     display: inline-block;
     margin-bottom: 30px;
-    color: #c4b5fd;
+
+    color: #7652d6;
     text-decoration: none;
     font-size: 14px;
+    font-weight: 600;
+
     transition: color 0.3s ease;
 }
 
 .feedback-back:hover {
-    color: #ffffff;
+    color: #5635b5;
 }
+
+/* Heading */
 
 .feedback-heading {
     text-align: center;
@@ -46,19 +56,23 @@
 
 .feedback-heading h2 {
     margin: 12px 0;
-    color: #ffffff;
+
+    color: #18233d;
     font-size: clamp(28px, 5vw, 38px);
+    font-weight: 800;
 }
 
 .feedback-heading h2 span {
-    color: #a78bfa;
+    color: #7652d6;
 }
 
 .feedback-heading p {
-    color: #a7b0c0;
+    color: #718096;
     line-height: 1.7;
     font-size: 14px;
 }
+
+/* Form */
 
 .feedback-form {
     display: flex;
@@ -73,34 +87,42 @@
 }
 
 .feedback-field label {
-    color: #e5e7eb;
+    color: #25324d;
     font-size: 14px;
     font-weight: 600;
 }
+
+/* Select and Textarea */
 
 .feedback-field select,
 .feedback-field textarea {
     width: 100%;
     padding: 15px 17px;
-    border: 1px solid rgba(196, 181, 253, 0.25);
+
+    border: 1px solid #e2dced;
     border-radius: 12px;
     outline: none;
-    background: rgba(8, 11, 18, 0.8);
-    color: #ffffff;
+
+    background: #faf9fd;
+    color: #18233d;
+
     font: inherit;
     font-size: 14px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    transition: border-color 0.3s ease, box-shadow 0.3s ease,
+                background 0.3s ease;
 }
 
 .feedback-field select:focus,
 .feedback-field textarea:focus {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14);
+    border-color: #7652d6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(118, 82, 214, 0.12);
 }
 
 .feedback-field select option {
-    background: #101622;
-    color: #ffffff;
+    background: #ffffff;
+    color: #18233d;
 }
 
 .feedback-field textarea {
@@ -110,7 +132,7 @@
 }
 
 .feedback-field textarea::placeholder {
-    color: #707b8e;
+    color: #9aa3b3;
 }
 
 .feedback-field small {
@@ -118,22 +140,29 @@
     font-size: 12px;
 }
 
+/* Submit Button */
+
 .feedback-submit-btn {
     width: 100%;
     padding: 16px 22px;
+
     border: none;
     border-radius: 12px;
-    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+
+    background: linear-gradient(135deg, #7652d6, #5b65d8);
     color: #ffffff;
+
     font-size: 15px;
     font-weight: 700;
+
     cursor: pointer;
+
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feedback-submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 10px 25px rgba(118, 82, 214, 0.24);
 }
 
 .feedback-submit-btn:disabled {
@@ -143,9 +172,12 @@
     box-shadow: none;
 }
 
+/* Feedback Messages */
+
 .feedback-message {
     display: none;
     padding: 12px 15px;
+
     border-radius: 10px;
     font-size: 14px;
     line-height: 1.5;
@@ -153,26 +185,30 @@
 
 .feedback-message.success {
     display: block;
-    color: #86efac;
-    background: rgba(34, 197, 94, 0.10);
-    border: 1px solid rgba(34, 197, 94, 0.25);
+
+    color: #16834b;
+    background: #eaf8f0;
+    border: 1px solid #bce8ce;
 }
 
 .feedback-message.error {
     display: block;
-    color: #fca5a5;
-    background: rgba(239, 68, 68, 0.10);
-    border: 1px solid rgba(239, 68, 68, 0.25);
+
+    color: #c93636;
+    background: #fff0f0;
+    border: 1px solid #f3c5c5;
 }
+
+/* Note */
 
 .feedback-note {
     margin-top: 25px;
+
     color: #8490a3;
     font-size: 12px;
     line-height: 1.6;
     text-align: center;
 }
-
 
 /* =====================================================
    MOBILE RESPONSIVE
